@@ -1,0 +1,42 @@
+body
+{
+	margin: 0px;
+	color: white;
+}
+
+.section
+{
+	width: auto;
+	padding: 50px;
+}
+
+.background_image
+{
+	position: fixed;
+	top: 0;
+	z-index: -10;
+	width:100%;
+}
+
+#s0
+{
+	height:1200px;
+}
+
+#s1
+{
+	height:1500px;
+	background-size: 100%;
+}
+
+#s2
+{
+	height:1000px;
+	background-size: 100%;
+}
+
+h1
+{
+	width: 300px;
+	margin: auto;
+}
