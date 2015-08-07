@@ -1,6 +1,7 @@
 class Tweet():
 
-    def __init__(self,author,content):
+    def __init__(self,id,author,content):
+        self.id = id
         self.author = author
         self.content = content
-        self.classifications = {}
+        self.automatic_classifications = {}
