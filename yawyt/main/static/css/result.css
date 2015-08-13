@@ -1,9 +1,3 @@
-body
-{
-	margin: 0px;
-	color: white;
-}
-
 .section
 {
 	width: auto;
@@ -33,10 +27,4 @@ body
 {
 	height:1000px;
 	background-size: 100%;
-}
-
-h1
-{
-	width: 300px;
-	margin: auto;
 }

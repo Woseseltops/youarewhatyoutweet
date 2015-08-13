@@ -12,4 +12,4 @@ def analyze(request):
 
 def results(request):
 
-    return render(request,'main.html',{'classifier_sections':ClassifierSection.objects.all()})
+    return render(request,'result_overview.html',{'classifier_sections':ClassifierSection.objects.all()})

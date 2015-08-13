@@ -1,0 +1,75 @@
+body
+{
+	background: url("../img/bg0.jpg") no-repeat;
+    background-attachment: fixed;
+	background-size: 100%;
+}
+
+input,label,.centerfield
+{
+	border-radius: 20px;
+	font-family: Muli;
+	background-color:rgb(250,240,230);
+	border:0px;
+	font-size:25px;
+	color: rgba(85,55,30,0.5);
+}
+
+input,label
+{
+	margin:20px;
+	height:60px;
+	padding:10px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.mainframe, .centerfield
+{
+	margin: auto;
+	text-align: center;
+	margin-top: 180px;
+	width: 300px;
+	padding: 50px;
+}
+
+.mainframe
+{
+	width: 1000px;
+}
+
+.button
+{
+	background-color:rgb(120,90,70);
+    color: white;
+	cursor:pointer;
+}
+
+.text-input
+{
+	color:#564738;
+	margin-left:0px;
+	padding-left:60px;
+}
+
+.text-input, label
+{
+	width:500px;
+}
+
+label
+{
+	margin-right: -50px;
+	padding-left:14px;
+	font-size:32px;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 9px;
+	position:relative;
+	top:3px;
+}
+
+p
+{
+    font-size: 30px;
+}
