@@ -15,6 +15,8 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+if BASE_DIR[-1] != '/':
+    BASE_DIR += '/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -106,4 +108,5 @@ STATIC_URL = '/static/'
 DATAROOT = BASE_DIR + 'main/data/'
 TWEET_DATAFOLDER = DATAROOT+'tweets/'
 CLASSIFICATION_DATAFOLDER = DATAROOT+'classifications/'
-ANALYSIS_LOGFOLDER = DATAROOT+'log/'
+ANALYSIS_LOGFOLDER = DATAROOT+'logs/'
+PASSWORD_FOLDER = BASE_DIR + 'main/passwords/'

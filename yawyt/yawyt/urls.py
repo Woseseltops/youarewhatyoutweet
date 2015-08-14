@@ -21,7 +21,7 @@ import main
 
 urlpatterns = [
     url(r'^$', 'main.views.twittername_entry'),
-    url(r'^analyze/(?P<user>.*)$', 'main.views.twittername_entry'),
+    url(r'^analyze/(?P<user>.*)$', 'main.views.analyze'),
     url(r'^results/(?P<user>.*)$', 'main.views.results'),
     url(r'^log/(?P<user>.*)$', 'main.views.logs'),
     url(r'^admin/', include(admin.site.urls)),
