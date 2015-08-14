@@ -35,7 +35,7 @@ def tweet_annotations_to_files_per_author(tweetlist,folderpath):
                 files[tweet.author][classification] = open(folderpath+tweet.author+'.'+classification+'.txt','w')
 
         for classification, score in tweet.automatic_classifications.items():
-            files[tweet.author][classification.write(tweet.id+'\t'+score+'\n')
+            files[tweet.author][classification].write(tweet.id+'\t'+score+'\n')
 
 def file_to_tweet_list(filepath):
 
