@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 
 class ClassifierSection(models.Model):
-    classifier_name = models.CharField(max_length=200)
+    classifier_module_name = models.CharField(max_length=200)
+    classifier_class_name = models.CharField(max_length=200)
     template_name = models.CharField(max_length=200)
 
     def __str__(self):
