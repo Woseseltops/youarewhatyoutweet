@@ -4,6 +4,7 @@ from models import ClassifierSection
 from twitter.tweet import tweet_list_to_files_per_author, tweet_annotations_to_files_per_author
 from twitter.import_tweets import collect_tweets_for_user
 import yawyt.settings as settings
+import importlib
 
 # Create your views here.
 
@@ -22,7 +23,12 @@ def analyze(request,user):
     log_progress_for_user('Analyzing tweets for user '+user, user)
 
     for classifier_section in ClassifierSection.objects.all():
-        classifier = __import__('classifiers.'+classifier_section.classifier_module_name,fromlist=[classifier_section.classifier_class_name])
+        classifier_module = importlib.import_module('main.classifiers.'+classifier_section.classifier_module_name)
+        print(classifier_module)
+        classifier_class = getattr(classifier_module,classifier_section.classifier_class_name)
+        print(classifier_class)
+        classifier = classifier_class()
+        print(classifier)
 
         for tweet in tweets:
             classifier.classify(tweet)
@@ -39,7 +45,7 @@ def log(request, user):
     return HttpResponse(open(settings.ANALYSIS_LOGFOLDER+user+'.txt').read())
 
 
-def results(request):
+def results(request,user):
 
     return render(request,'result_overview.html',{'classifier_sections':ClassifierSection.objects.all()})
 
