@@ -9,7 +9,7 @@ class ExampleClassifier(Classifier):
         #Tokenize
         tokens = tweet.content.split()
 
-        if 'rood' in tweet.tokens:
+        if 'rood' in tokens:
             self.add_classifications_to_tweet(tweet,{'rood':1,'bruin':0,'blond':0})
         else:
             self.add_classifications_to_tweet(tweet,{'rood':0.3,'bruin':0.3,'blond':0.3})
