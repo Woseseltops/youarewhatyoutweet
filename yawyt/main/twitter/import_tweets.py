@@ -6,7 +6,7 @@ from twython import Twython, TwythonError
 def get_passwords_from_a_random_password_file(passwordfolder):
 
     passwordfilename = random.choice(os.listdir(passwordfolder))
-    lines = open(passwordfilename,'r').readlines()
+    lines = open(passwordfolder+passwordfilename,'r').readlines()
     passwords = {}
 
     for n,i in enumerate(lines):
@@ -28,7 +28,7 @@ def collect_tweets_for_user(user,passwordfolder):
     while not no_tweets_received:
 
         try:
-            new_raw_tweets = twitter_connection.get_user_timeline(screen_name=user,count=200,page=c)
+            new_raw_tweets = twitter_connection.get_user_timeline(screen_name=user,count=200,page=page)
         except TwythonError:
             new_raw_tweets = []
             print('Twython is sad :(')
@@ -39,7 +39,7 @@ def collect_tweets_for_user(user,passwordfolder):
         else:
 
             for raw_tweet in new_raw_tweets:
-                current_tweet = Tweet(raw_tweet['id'],'wessel',clean_tweet_text(raw_tweet['text']))
+                current_tweet = Tweet(raw_tweet['id'],raw_tweet['user']['screen_name'],clean_tweet_text(raw_tweet['text']))
                 all_tweets.append(current_tweet)
 
         page += 1
