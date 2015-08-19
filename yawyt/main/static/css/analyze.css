@@ -1,0 +1,20 @@
+body
+{
+	background: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url("../img/bg0.jpg") no-repeat;
+    background-attachment: fixed;
+	background-size: 100%;
+}
+
+.mainframe, .centerfield
+{
+	margin: auto;
+	text-align: center;
+	margin-top: 180px;
+	width: 800px;
+	padding: 50px;
+}
+
+p
+{
+    font-size: 40px;
+}
