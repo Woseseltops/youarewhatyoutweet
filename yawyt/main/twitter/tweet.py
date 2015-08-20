@@ -37,19 +37,20 @@ def tweet_annotations_to_files_per_author(tweetlist,folderpath):
         for classification, score in tweet.automatic_classifications.items():
             files[tweet.author][classification].write('\t'.join([str(column) for column in [tweet.id,score]])+'\n')
 
-def file_to_tweet_list(filepath):
+def file_to_tweet_dict(filepath):
+    """Returns a dict of tweets with id as key"""
 
-    tweetlist = []
+    tweetdict = {}
 
     for line in open(filepath):
         current_tweet = Tweet(0,'','')
 
         #Load every item on the line, using the package_order
-        [setattr(current_tweet,PACKAGE_ORDER[n],item) for n, item in enumerate(line.split())]
+        [setattr(current_tweet,PACKAGE_ORDER[n],item) for n, item in enumerate(line.split('\t'))]
 
-        tweetlist.append(current_tweet)
+        tweetdict[current_tweet.id] = current_tweet
 
-    return tweetlist
+    return tweetdict
 
 if __name__ == '__main__':
 
