@@ -1,0 +1,4 @@
+Collecting tweets for suzan
+Collecting tweets completed
+Analyzing tweets for user suzan
+Finished analysis
