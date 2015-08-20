@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'main',
-    'main.templatetags.tweet_tags'
+    'main.templatetags.tweet_tags',
+    'main.templatetags.score_visualisation'
 )
 
 MIDDLEWARE_CLASSES = (
