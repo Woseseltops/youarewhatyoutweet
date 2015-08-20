@@ -1,3 +1,10 @@
 {% load tweet_tags %}
+{% load score_visualisation %}
 
-{{ 10|show_tweet }} Dit is het template over geslacht.
+Dit is het template over geslacht.
+
+{{ 33|show_score_visualisation:user }}
+
+{% for tweet in most_extreme_tweets.example_classifier %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
