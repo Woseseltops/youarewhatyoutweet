@@ -1,26 +1,10 @@
-import os
-import random
 from tweet import Tweet
-from twython import Twython, TwythonError
-
-def get_passwords_from_a_random_password_file(passwordfolder):
-
-    passwordfilename = random.choice(os.listdir(passwordfolder))
-    lines = open(passwordfolder+passwordfilename,'r').readlines()
-    passwords = {}
-
-    for n,i in enumerate(lines):
-        if i[0] == '#':
-            passwords[i[1:].strip()] = lines[n+1].strip()
-
-    return passwords
+from twython import TwythonError
+import connection
 
 def collect_tweets_for_user(user,passwordfolder):
 
-    passwords = get_passwords_from_a_random_password_file(passwordfolder)
-    twitter_connection = Twython(passwords['app_key'], passwords['app_secret'],
-              passwords['oauth_token'], passwords['oauth_token_secret'])
-
+    twitter_connection = connection.create_twitter_connection(passwordfolder)
     no_tweets_received = False
     all_tweets = []
     page = 1
