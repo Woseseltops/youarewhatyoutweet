@@ -10,4 +10,62 @@ h1
 	width: 800px;
 	margin: auto;
 	font-size: 80px;
+	text-align: center;
+}
+
+.scoremeter
+{
+	width: 600px;
+	margin: auto;
+	margin-bottom: 100px;
+}
+
+.scoremeter-part
+{
+	height: 50px;
+	display: inline-block;
+	margin: -2px;
+}
+
+.scoremeter .right_part
+{
+	width: 200px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.scoremeter .left_part
+{
+	width: 400px;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.photo_container
+{
+	width:65px;
+	margin-top:-4px;
+}
+
+.photo_container .triangle
+{
+    border-color: transparent transparent white transparent;
+    border-style: solid;
+    border-width: 0px 10px 10px 10px;
+    height: 0px;
+    width: 0px;
+	margin:auto;
+}
+
+.user_photo
+{
+	height: 65px;
+	width: 65px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.photo_container img
+{
+	margin:8px;
 }
