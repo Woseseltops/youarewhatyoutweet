@@ -3,7 +3,10 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/general.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/result.css' %}" />
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Fanwood+Text' rel='stylesheet' type='text/css'>
+
 	<script type="text/javascript" src="{% static "js/parallax.js" %}"></script>
 
     <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -33,7 +36,7 @@
 {% endfor %}
 
 <div class="section" id="s0">
-Hier komt de hoofdtekst
+<h1>You are what you tweet</h1>
 </div>
 
 {% for classifier_section in classifier_sections %}

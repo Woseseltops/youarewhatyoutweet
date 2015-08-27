@@ -53,7 +53,7 @@ $(document).ready(function()
 		{	
 			if (c2 != section_id)
 			{
-				$('#s'+c2).css('background-image','url("static/img/bg'+c2+'.jpg")');
+				$('#s'+c2).css('background-image','url("/static/img/bg'+c2+'.jpg")');
 			}
 			c2++;		
 		});
