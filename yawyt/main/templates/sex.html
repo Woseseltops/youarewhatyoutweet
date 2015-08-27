@@ -1,9 +1,9 @@
 {% load tweet_tags %}
 {% load score_visualisation %}
 
-Dit is het template over geslacht.
+<h1>Geslacht</h1>
 
-{{ 33|show_score_visualisation:user }}
+{{ 33|show_score_visualisation:profile_image_url }}
 
 {% for tweet in most_extreme_tweets.example_classifier %}
 {{ tweet.id|show_tweet }}

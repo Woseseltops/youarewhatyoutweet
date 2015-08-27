@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from models import ClassifierSection
 import yawyt.settings as settings
 from twitter.tweet import file_to_tweet_dict
+from twitter.profile_image import get_profile_image_url
 from analysis import start_analysis_thread_for_user
 
 # Create your views here.
@@ -36,4 +37,5 @@ def results(request,user):
         print(most_extreme_tweets)
 
     return render(request,'result_overview.html',{'classifier_sections':ClassifierSection.objects.all(),
-                                                  'most_extreme_tweets':most_extreme_tweets})
+                                                  'most_extreme_tweets':most_extreme_tweets,
+                                                  'profile_image_url':get_profile_image_url(user,settings.PASSWORD_FOLDER )})
