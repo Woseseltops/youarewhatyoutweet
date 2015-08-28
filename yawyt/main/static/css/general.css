@@ -22,23 +22,32 @@ h1
 
 .scoremeter-part
 {
-	height: 50px;
+	height: 5px;
 	display: inline-block;
 	margin: -2px;
+	background-color: white;
+    border-radius: 15px;
 }
 
 .scoremeter .right_part
 {
 	width: 200px;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
 }
 
 .scoremeter .left_part
 {
-	width: 400px;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
+	width: 300px;
+}
+
+.number_bubble
+{
+    display: inline-block;
+    background-color: gray;
+    font-size: 30px;
+    padding: 15px;
+    padding-top: 6px;
+    margin: 20px;
+    border-radius: 38px;
 }
 
 .photo_container
@@ -55,6 +64,7 @@ h1
     height: 0px;
     width: 0px;
 	margin:auto;
+    margin-top: -14px;
 }
 
 .user_photo
