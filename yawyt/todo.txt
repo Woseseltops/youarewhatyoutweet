@@ -1,0 +1,3 @@
+* Je krijgt nu een error, waar komt die door?
+* Ordenen van classifiers
+* Al een begin maken met 'geef de vijf hoogste tweets', 'geef de vijf laagste tweets', etc.
