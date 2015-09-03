@@ -53,7 +53,9 @@ $(document).ready(function()
 		{	
 			if (c2 != section_id)
 			{
-				$('#s'+c2).css('background-image','url("/static/img/bg'+c2+'.jpg")');
+			    //Find the background image you need
+			    background_of_this_section = $('#bg'+c2).attr('src');
+				$('#s'+c2).css('background-image','url("'+background_of_this_section+'")');
 			}
 			c2++;		
 		});

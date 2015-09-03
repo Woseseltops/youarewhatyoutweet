@@ -25,11 +25,11 @@
 <body>
 
 
-<img class="background_image" id="bg0" src="{% static "img/bg0.jpg" %}">
+<img class="background_image" id="bg0" src="{% static "img/general.jpg" %}">
 
 {% for classifier_section in classifier_sections %}
 {% with i=forloop.counter|stringformat:"s" %}
-{% with "img/bg"|add:i|add:".jpg" as image_static %}
+{% with "img/"|add:classifier_section.template_name|add:".jpg" as image_static %}
 <img class="background_image" id="bg{{ forloop.counter}}" src="{% static image_static %}">
 {% endwith %}
 {% endwith %}
