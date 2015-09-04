@@ -36,6 +36,6 @@ def results(request,user):
         most_extreme_tweets[classifier_section.classifier_module_name] = all_tweets_for_user.values()[:5]
         print(most_extreme_tweets)
 
-    return render(request,'result_overview.html',{'classifier_sections':ClassifierSection.objects.all(),
+    return render(request,'result_overview.html',{'classifier_sections':ClassifierSection.objects.all().order_by('position'),
                                                   'most_extreme_tweets':most_extreme_tweets,
                                                   'profile_image_url':get_profile_image_url(user,settings.PASSWORD_FOLDER )})
