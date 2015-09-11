@@ -107,6 +107,8 @@ USE_TZ = True
 PROJECT_ROOT = '/home/wstoop/yawyt/repo/youarewhatyoutweet/yawyt/'
 STATIC_URL = '/static/'
 
+NUMBER_OF_TWEETS_TO_SHOW_PER_CLASS = 5
+
 DATAROOT = BASE_DIR + 'main/data/'
 TWEET_DATAFOLDER = DATAROOT+'tweets/'
 CLASSIFICATION_DATAFOLDER = DATAROOT+'classifications/'

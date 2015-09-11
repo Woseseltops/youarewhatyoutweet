@@ -5,6 +5,6 @@
 
 {{ 2|show_score_visualisation:profile_image_url }}
 
-{% for tweet in most_extreme_tweets.example_classifier %}
+{% for tweet in most_extreme_tweets.example_classifier.rood %}
 {{ tweet.id|show_tweet }}
 {% endfor %}
