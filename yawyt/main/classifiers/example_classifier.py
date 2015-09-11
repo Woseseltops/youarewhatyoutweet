@@ -2,7 +2,7 @@ from abstract_classifier import Classifier
 
 class ExampleClassifier(Classifier):
     
-    name = 'example'
+    name = 'example_classifier'
 
     def classify(self,tweet):
     	
@@ -32,5 +32,5 @@ if __name__ == '__main__':
     classifier = ExampleClassifier()
     
     for tweet in tweets_to_classify:
-        classifier.classify(tweet);
-        print(tweet.automatic_classifications);
+        classifier.classify(tweet)
+        print(tweet.automatic_classifications)
