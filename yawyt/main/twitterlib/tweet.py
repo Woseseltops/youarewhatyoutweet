@@ -1,3 +1,5 @@
+import json
+
 PACKAGE_ORDER = ['id','author','content']
 
 class Tweet():
@@ -34,8 +36,9 @@ def tweet_annotations_to_files_per_author(tweetlist,folderpath):
             for classification in tweet.automatic_classifications.keys():
                 files[tweet.author][classification] = open(folderpath+tweet.author+'.'+classification+'.txt','w')
 
-        for classification, score in tweet.automatic_classifications.items():
-            files[tweet.author][classification].write('\t'.join([str(column) for column in [tweet.id,score]])+'\n')
+        for classification, scores in tweet.automatic_classifications.items():
+            scores_as_json = json.dumps(scores)
+            files[tweet.author][classification].write('\t'.join([str(column) for column in [tweet.id,scores_as_json]])+'\n')
 
 def file_to_tweet_dict(filepath):
     """Returns a dict of tweets with id as key"""
@@ -51,6 +54,12 @@ def file_to_tweet_dict(filepath):
         tweetdict[current_tweet.id] = current_tweet
 
     return tweetdict
+
+def add_annotations_in_files_to_tweets(filepath,label,tweetlist):
+
+    for line in open(filepath):
+        tweet_id, json_annotations = line.strip().split('\t')
+        tweetlist[tweet_id].automatic_classifications[label] = json.loads(json_annotations)
 
 if __name__ == '__main__':
 
