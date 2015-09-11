@@ -16,9 +16,16 @@ class ExampleClassifier(Classifier):
 
 #You can play with a classifier as standalone like this
 if __name__ == '__main__':
-	
-    from main.twitter.tweet import Tweet	
 
+    #Set the python path to contain our library with twitter specific code
+    import sys
+    import os
+    sys.path.append(os.path.abspath(__file__+'/../../'))
+
+    #Import that twitter specific code
+    from twitterlib.tweet import Tweet
+
+    #The actual code
     tweets_to_classify = [Tweet(1,'wessel','ik heb blond haar'),
                           Tweet(2,'bassie','ik heb rood haar')]
 

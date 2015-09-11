@@ -1,5 +1,5 @@
-from twitter.tweet import tweet_list_to_files_per_author, tweet_annotations_to_files_per_author
-from twitter.import_tweets import collect_tweets_for_user
+from twitterlib.tweet import tweet_list_to_files_per_author, tweet_annotations_to_files_per_author
+from twitterlib.import_tweets import collect_tweets_for_user
 from models import ClassifierSection
 import yawyt.settings as settings
 import importlib
