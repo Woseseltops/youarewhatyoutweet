@@ -1,6 +1,7 @@
 
 import codecs
 import cPickle
+import re
 
 import ucto
 
