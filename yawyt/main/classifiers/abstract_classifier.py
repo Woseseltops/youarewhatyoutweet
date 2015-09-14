@@ -39,7 +39,7 @@ class Classifier():
         return vector
 
     def predict(self, vector):
-
+        
         proba = self.clf.predict_proba(vector)
         return proba.tolist()[0]
 

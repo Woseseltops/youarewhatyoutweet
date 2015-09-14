@@ -4,7 +4,7 @@ import numpy
 
 from abstract_classifier import Classifier
 
-class GenderClassifier(Classifier):
+class AgeClassifier(Classifier):
 
     def __init__(self, model, vocab):
 
@@ -60,8 +60,8 @@ if __name__ == '__main__':
         Tweet(22, 'w', 'Mygod morgen 23 graden in nl �')
         ]
         
-    classifier = GenderClassifier('/vol/tensusers/fkunneman/exp/profl/exp_gender/token_ngrams_frequency_7500/nb/fold_7/classifiermodel.joblib.pkl', 
-        '/vol/tensusers/fkunneman/exp/profl/exp_gender/token_ngrams_frequency_7500/nb/fold_7/vocabulary.txt')
+    classifier = AgeClassifier('/vol/tensusers/fkunneman/exp/profl/exp/token_ngrams_frequency_7500/nb/fold_7/classifiermodel.joblib.pkl', 
+        '/vol/tensusers/fkunneman/exp/profl/exp/token_ngrams_frequency_7500/nb/fold_7/vocabulary.txt')
     
     for tweet in tweets_to_classify:
         classifier.classify(tweet)

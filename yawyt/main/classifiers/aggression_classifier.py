@@ -59,7 +59,7 @@ if __name__ == '__main__':
         Tweet(22, 'w', 'Mygod morgen 23 graden in nl �')
         ]
         
-    classifier = GenderClassifier('/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_model.joblib.pkl', 
+    classifier = AggressionClassifier('/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_model.joblib.pkl', 
         '/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_vocabulary.txt', 
         '/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_idfs.txt')
     
