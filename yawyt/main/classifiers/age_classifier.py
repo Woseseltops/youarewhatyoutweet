@@ -11,7 +11,7 @@ class GenderClassifier(Classifier):
         Classifier.__init__(self, model, vocab)
         #with codecs.open(weights, 'r', 'utf-8') as weights_file:
         #    self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
-        self.name = 'gender_classifier'
+        self.name = 'age_classifier'
 
     def classify(self, tweet):
 
@@ -23,7 +23,7 @@ class GenderClassifier(Classifier):
                 print(tweet.content)
             except:
                 print('decode error')
-            self.add_classifications_to_tweet(tweet, {'man' : classification[1], 'vrouw': classification[0]})
+            self.add_classifications_to_tweet(tweet, {'onder 20' : classification[0], '20-40' : classification[1], '40 plus' : classification[2]})
 
 #You can play with a classifier as standalone like this
 if __name__ == '__main__':
