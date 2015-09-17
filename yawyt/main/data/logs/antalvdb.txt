@@ -1,4 +1,3 @@
 Collecting tweets for antalvdb
 Collecting tweets completed
 Analyzing tweets for user antalvdb
-Finished analysis

@@ -2,7 +2,7 @@ from sklearn.externals import joblib
 import codecs
 import numpy
 
-from abstract_classifier import Classifier
+from main.classifiers.abstract_classifier import Classifier
 
 class AgeClassifier(Classifier):
 

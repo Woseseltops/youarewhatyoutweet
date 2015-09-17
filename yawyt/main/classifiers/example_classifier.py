@@ -1,4 +1,4 @@
-from abstract_classifier import Classifier
+from main.classifiers.abstract_classifier import Classifier
 
 class ExampleClassifier(Classifier):
     

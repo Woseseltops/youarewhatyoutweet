@@ -1,6 +1,6 @@
-from tweet import Tweet
+from main.twitterlib.tweet import Tweet
 from twython import TwythonError
-import connection
+from main.twitterlib import connection
 
 def collect_tweets_for_user(user,passwordfolder):
 

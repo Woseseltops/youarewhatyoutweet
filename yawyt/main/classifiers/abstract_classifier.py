@@ -3,7 +3,7 @@ import codecs
 import pickle
 import re
 
-import ucto
+#import ucto
 
 class Classifier():
 

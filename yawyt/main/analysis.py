@@ -1,6 +1,6 @@
-from twitterlib.tweet import tweet_list_to_files_per_author, tweet_annotations_to_files_per_author
-from twitterlib.import_tweets import collect_tweets_for_user
-from models import ClassifierSection
+from main.twitterlib.tweet import tweet_list_to_files_per_author, tweet_annotations_to_files_per_author
+from main.twitterlib.import_tweets import collect_tweets_for_user
+from main.models import ClassifierSection
 import yawyt.settings as settings
 import importlib
 from threading import Thread

@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from models import ClassifierSection
+from main.models import ClassifierSection
 import yawyt.settings as settings
-from twitterlib.tweet import file_to_tweet_dict, add_annotations_in_files_to_tweets
-from twitterlib.profile_image import get_profile_image_url
-from analysis import start_analysis_thread_for_user
+from main.twitterlib.tweet import file_to_tweet_dict, add_annotations_in_files_to_tweets
+from main.twitterlib.profile_image import get_profile_image_url
+from main.analysis import start_analysis_thread_for_user
 
 # Create your views here.
 
