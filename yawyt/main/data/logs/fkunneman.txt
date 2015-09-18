@@ -1,0 +1,4 @@
+Collecting tweets for fkunneman
+Collecting tweets completed
+Analyzing tweets for user fkunneman
+Finished analysis

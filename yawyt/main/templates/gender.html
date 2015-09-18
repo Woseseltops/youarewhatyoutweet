@@ -1,0 +1,14 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+<h1>Geslacht</h1>
+
+{{ 2|show_score_visualisation:profile_image_url }}
+
+{% for tweet in most_extreme_tweets.gender_classifier.vrouw %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
+
+{% for tweet in most_extreme_tweets.gender_classifier.man %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
