@@ -1,29 +1,24 @@
-from sklearn.externals import joblib
-import codecs
 import numpy
+from scipy import sparse
 
 from main.classifiers.abstract_classifier import Classifier
 
 class AgeClassifier(Classifier):
 
-    def __init__(self, model, vocab):
+    def __init__(self):
 
-        Classifier.__init__(self, model, vocab)
-        #with codecs.open(weights, 'r', 'utf-8') as weights_file:
-        #    self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
+        Classifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/aclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/av.txt')
+        with open('/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/aw.txt', 'r', encoding = 'utf-8') as weights_file:
+            self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
         self.name = 'age_classifier'
 
     def classify(self, tweet):
 
         if tweet.content[:2] != "RT":
             #vector = numpy.array(self.vectorize(tweet.content)) * self.weights
-            vector = self.vectorize(tweet.content)
-            classification = self.predict(vector)
-            try:
-                print(tweet.content)
-            except:
-                print('decode error')
-            self.add_classifications_to_tweet(tweet, {'onder 20' : classification[0], '20-40' : classification[1], '40 plus' : classification[2]})
+            vector = numpy.array(self.vectorize(tweet.content))
+            classification = self.predict(sparse.csr_matrix(vector))
+            self.add_classifications_to_tweet(tweet, {'onder20' : classification[0], '20tot40' : classification[1], '40plus' : classification[2]})
 
 #You can play with a classifier as standalone like this
 if __name__ == '__main__':
@@ -60,8 +55,8 @@ if __name__ == '__main__':
         Tweet(22, 'w', 'Mygod morgen 23 graden in nl �')
         ]
         
-    classifier = AgeClassifier('/vol/tensusers/fkunneman/exp/profl/exp/token_ngrams_frequency_7500/nb/fold_7/classifiermodel.joblib.pkl', 
-        '/vol/tensusers/fkunneman/exp/profl/exp/token_ngrams_frequency_7500/nb/fold_7/vocabulary.txt')
+#    classifier = AgeClassifier('/vol/tensusers/fkunneman/exp/profl/exp/token_ngrams_frequency_7500/nb/fold_7/classifiermodel.joblib.pkl', 
+#        '/vol/tensusers/fkunneman/exp/profl/exp/token_ngrams_frequency_7500/nb/fold_7/vocabulary.txt')
     
     for tweet in tweets_to_classify:
         classifier.classify(tweet)

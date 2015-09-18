@@ -34,13 +34,13 @@ def results(request,user):
     for classifier_section in ClassifierSection.objects.all():
 
         classifier_name = classifier_section.classifier_module_name
-        add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER+user+'.'+classifier_name+'.txt',classifier_name,all_tweets_for_user)
+        add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER+user+'.gender_classifier.txt',classifier_name,all_tweets_for_user)
 
         #Prepare saving the most extreme scores for each class for this classifier
         most_extreme_tweets[classifier_name] = {}
 
         #See what classes there are for this classifier, by taking them from a random tweet
-        classes_for_this_classifier = all_tweets_for_user[all_tweets_for_user.keys()[0]].automatic_classifications[classifier_name].keys()
+        classes_for_this_classifier = list(all_tweets_for_user[list(all_tweets_for_user.keys())[0]].automatic_classifications[classifier_name].keys())
 
         #For each class, take the most extreme cases
         for classname in classes_for_this_classifier:

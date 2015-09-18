@@ -1,9 +1,7 @@
 
-import codecs
 import pickle
 import re
-
-#import ucto
+import ucto
 
 class Classifier():
 
@@ -15,7 +13,7 @@ class Classifier():
         self.tokenizer = ucto.Tokenizer('/vol/customopt/lamachine/etc/ucto/tokconfig-nl-twitter')
         self.vocabulary = {}
         self.keys = []
-        with codecs.open(vocab, 'r', 'utf-8') as vocabularyfile:
+        with open(vocab, 'r', encoding = 'utf-8') as vocabularyfile:
             self.keys = [x.strip() for x in vocabularyfile.readlines()]
         self.vocabulary_length = len(self.keys)
         self.vocabulary = {x:i for i, x in enumerate(self.keys)}
@@ -32,16 +30,23 @@ class Classifier():
             if re.search('^http', token):
                 tokens[i] == 'URL'
         ngrams = tokens + [' '.join(x) for x in zip(tokens, tokens[1:]) ] + [ ' '.join(x) for x in zip(tokens, tokens[1:], tokens[2:])]
-        in_vocabulary = [(x, ngrams.count(x)) for x in list(set(ngrams) & set(self.keys))]
+        in_vocabulary = [(x, float(ngrams.count(x))) for x in list(set(ngrams) & set(self.keys))]
         vector = [0.0] * self.vocabulary_length
         for ngram in in_vocabulary:
             vector[self.vocabulary[ngram[0]]] = ngram[1] 
         return vector
 
-    def predict(self, vector):
+    def predict_proba(self, vector):
         
         proba = self.clf.predict_proba(vector)
         return proba.tolist()[0]
+
+    def predict(self, vector):
+        prediction = self.clf.predict(vector)
+        o = [0, 0, 0]
+        o[int(prediction[0])] = 1
+#        print(prediction, o)
+        return o    
 
     def add_classifications_to_tweet(self, tweet, classifications):
         tweet.automatic_classifications[self.name] = classifications

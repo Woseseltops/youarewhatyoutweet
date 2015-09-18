@@ -1,4 +1,4 @@
-import main.twitterlib.connection
+from main.twitterlib import connection
 
 def get_profile_image_url(user,passwordfolder):
 

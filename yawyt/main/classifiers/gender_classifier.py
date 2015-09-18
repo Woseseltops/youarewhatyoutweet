@@ -1,28 +1,24 @@
-from sklearn.externals import joblib
-import codecs
 import numpy
 
 from main.classifiers.abstract_classifier import Classifier
 
 class GenderClassifier(Classifier):
 
-    def __init__(self, model, vocab):
+    name = 'gender_classifier'
 
-        Classifier.__init__(self, model, vocab)
-        #with codecs.open(weights, 'r', 'utf-8') as weights_file:
-        #    self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
+    def __init__(self):
+
+        Classifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gv.txt')
+        with open('/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gw.txt') as weights_file:
+            self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
         self.name = 'gender_classifier'
 
     def classify(self, tweet):
 
         if tweet.content[:2] != "RT":
-            #vector = numpy.array(self.vectorize(tweet.content)) * self.weights
-            vector = self.vectorize(tweet.content)
-            classification = self.predict(vector)
-            try:
-                print(tweet.content)
-            except:
-                print('decode error')
+            vector = numpy.array(self.vectorize(tweet.content)) * self.weights
+            #vector = self.vectorize(tweet.content)
+            classification = self.predict_proba(vector)
             self.add_classifications_to_tweet(tweet, {'man' : classification[1], 'vrouw': classification[0]})
 
 #You can play with a classifier as standalone like this
@@ -60,8 +56,10 @@ if __name__ == '__main__':
         Tweet(22, 'w', 'Mygod morgen 23 graden in nl �')
         ]
         
-    classifier = GenderClassifier('/vol/tensusers/fkunneman/exp/profl/exp_gender/token_ngrams_frequency_7500/nb/fold_7/classifiermodel.joblib.pkl', 
-        '/vol/tensusers/fkunneman/exp/profl/exp_gender/token_ngrams_frequency_7500/nb/fold_7/vocabulary.txt')
+    #classifier = GenderClassifier('/vol/tensusers/fkunneman/exp/profl/exp_gender/token_ngrams_frequency_7500/nb/fold_7/classifiermodel.joblib.pkl', 
+#        '/vol/tensusers/fkunneman/exp/profl/exp_gender/token_ngrams_frequency_7500/nb/fold_7/vocabulary.txt')
+    
+    classifier = GenderClassifier('gclf.joblib.pkl', 'gv.txt', 'gw.txt')
     
     for tweet in tweets_to_classify:
         classifier.classify(tweet)

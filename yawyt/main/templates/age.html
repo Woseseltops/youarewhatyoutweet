@@ -1,1 +1,18 @@
-Dit is het template over leeftijd.
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+<h1>Leeftijd</h1>
+
+{{ 2|show_score_visualisation:profile_image_url }}
+
+{% for tweet in most_extreme_tweets.age_classifier.onder20 %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
+
+{% for tweet in most_extreme_tweets.age_classifier.20tot40 %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
+
+{% for tweet in most_extreme_tweets.age_classifier.40plus %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
