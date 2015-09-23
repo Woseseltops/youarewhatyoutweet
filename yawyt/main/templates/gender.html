@@ -1,14 +1,29 @@
 {% load tweet_tags %}
 {% load score_visualisation %}
 
+<style>
+.sex_meter .number_bubble
+{
+    background-color:#AD5B13;
+}
+</style>
+
 <h1>Geslacht</h1>
 
-{{ 2|show_score_visualisation:profile_image_url }}
+<h2>Mannelijkheidscore</h2>
+<div class="sex_meter">{{ meterscores_per_class.gender_classifier.man|show_score_visualisation:profile_image_url }}</div>
 
-{% for tweet in most_extreme_tweets.gender_classifier.vrouw %}
+<h2>Meest mannelijke tweets</h2>
+{% for tweet in most_extreme_tweets.gender_classifier.man %}
 {{ tweet.id|show_tweet }}
 {% endfor %}
 
-{% for tweet in most_extreme_tweets.gender_classifier.man %}
+<div style="height:200px;"></div>
+
+<h2>Vrouwelijkheidscore</h2>
+<div class="sex_meter">{{ meterscores_per_class.gender_classifier.vrouw|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest vrouwelijke tweets</h2>
+{% for tweet in most_extreme_tweets.gender_classifier.vrouw %}
 {{ tweet.id|show_tweet }}
 {% endfor %}

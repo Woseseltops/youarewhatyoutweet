@@ -1,18 +1,39 @@
 {% load tweet_tags %}
 {% load score_visualisation %}
 
+<style>
+.age_meter .number_bubble
+{
+    background-color:#882828;
+}
+</style>
+
 <h1>Leeftijd</h1>
 
-{{ 2|show_score_visualisation:profile_image_url }}
+<h2>Tienerscore</h2>
+<div class="age_meter">{{ meterscores_per_class.age_classifier.onder20|show_score_visualisation:profile_image_url }}</div>
 
-{% for tweet in most_extreme_tweets.age_classifier.onder20 %}
+<h2>Meest tienerachtige tweets</h2>
+{% for tweet in most_extreme_tweets.age_classifier.onder20|slice:":3" %}
 {{ tweet.id|show_tweet }}
 {% endfor %}
 
-{% for tweet in most_extreme_tweets.age_classifier.20tot40 %}
+<div style="height:200px;"></div>
+
+<h2>Jongvolwassenescore</h2>
+<div class="age_meter">{{ meterscores_per_class.age_classifier.20tot40|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest jongvolwassen tweets</h2>
+{% for tweet in most_extreme_tweets.age_classifier.20tot40|slice:":3" %}
 {{ tweet.id|show_tweet }}
 {% endfor %}
 
-{% for tweet in most_extreme_tweets.age_classifier.40plus %}
+<div style="height:200px;"></div>
+
+<h2>Volwassenescore</h2>
+<div class="age_meter">{{ meterscores_per_class.age_classifier.40plus|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest volwassen tweets</h2>
+{% for tweet in most_extreme_tweets.age_classifier.40plus|slice:":3" %}
 {{ tweet.id|show_tweet }}
 {% endfor %}
