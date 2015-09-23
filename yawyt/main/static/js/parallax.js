@@ -15,13 +15,12 @@ $(document).ready(function()
 		c = 0;
 		height_of_all_sections_investigated_so_far = 0;
 
-		$('#bg'+current_section).css('top',-pixels_scrolled_down/(current_background_maximum_scroll_speed - current_background_scroll_speed));
-
 		console.log('Start investigation')
 
 		$('.section').each(function()
 		{
-			height_of_section_investigating = parseInt($(this).css('height'));		
+		    pixels_scrolled_down_in_this_section = pixels_scrolled_down - height_of_all_sections_investigated_so_far;
+			height_of_section_investigating = parseInt($(this).css('height'));
 			height_of_all_sections_investigated_so_far += height_of_section_investigating;
 
 			if (height_of_all_sections_investigated_so_far > pixels_scrolled_down)
@@ -36,6 +35,10 @@ $(document).ready(function()
 					$('.background_image').hide();
 					$('#bg'+c).show();
 				}
+
+				//Set a nice scrolling effect to the current background as well
+        		$('#bg'+current_section).css('top',-pixels_scrolled_down_in_this_section/(current_background_maximum_scroll_speed - current_background_scroll_speed));
+
 				return false; //Break the loop
 			}
 			else
@@ -50,15 +53,14 @@ $(document).ready(function()
 	{
 		c2 = 0; //Called c2 because it otherwise messes op the counter in the scroll function
 		$('.section').each(function()
-		{	
+		{
 			if (c2 != section_id)
 			{
 			    //Find the background image you need
 			    background_of_this_section = $('#bg'+c2).attr('src');
 				$('#s'+c2).css('background-image','url("'+background_of_this_section+'")');
 			}
-			c2++;		
+			c2++;
 		});
 	}
 });
-
