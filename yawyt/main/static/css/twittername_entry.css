@@ -1,6 +1,6 @@
 body
 {
-	background: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url("../img/general.jpg") no-repeat;
+	background: url("../img/general.jpg") no-repeat;
     background-attachment: fixed;
 	background-size: 100%;
 }

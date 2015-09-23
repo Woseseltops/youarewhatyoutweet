@@ -9,8 +9,16 @@ h1
 {
 	width: 800px;
 	margin: auto;
+	margin-bottom:50px;
 	font-size: 80px;
 	text-align: center;
+}
+
+h2
+{
+    margin: auto;
+    text-align: center;
+
 }
 
 .scoremeter
