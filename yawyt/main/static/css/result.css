@@ -12,9 +12,12 @@
 	width:120%;
 }
 
-#s0
+.introtext
 {
-	height:1200px;
+    width: 900px;
+    margin: auto;
+    font-size: 29px;
+    text-align: center;
 }
 
 #s1, #s2, #s3, #s4
