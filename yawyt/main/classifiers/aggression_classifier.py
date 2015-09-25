@@ -8,16 +8,15 @@ class AggressionClassifier(Classifier):
     def __init__(self):
 
         Classifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sv.txt')
-        with codecs.open('/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sw.txt', 'r', 'utf-8') as weights_file:
+        with open('/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sw1.txt') as weights_file:
             self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
         self.name = 'aggression_classifier'
 
     def classify(self, tweet):
 
-        if tweet.content[:2] != "RT":
-            
+        if tweet.content[:2] != "RT":      
             vector = numpy.array(self.vectorize(tweet.content.lower())) * self.weights
-            classification = self.predict(vector)
+            classification = self.predict_proba(vector)
             self.add_classifications_to_tweet(tweet, {'aggressive' : classification[0]})
 
 #You can play with a classifier as standalone like this
@@ -55,10 +54,15 @@ if __name__ == '__main__':
         Tweet(22, 'w', 'Mygod morgen 23 graden in nl �')
         ]
         
-    classifier = AggressionClassifier('/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_model.joblib.pkl', 
-        '/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_vocabulary.txt', 
-        '/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_idfs.txt')
+#    classifier = AggressionClassifier('/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_model.joblib.pkl', 
+ #       '/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_vocabulary.txt', 
+  #      '/vol/tensusers/fkunneman/exp/aggressive_tweets/questest/svm/tfidf/all/ngram/lower/testout_idfs.txt')
+   
+    classifier = AggressionClassifier()
     
     for tweet in tweets_to_classify:
-        classifier.classify(tweet)
-        print(tweet.automatic_classifications)
+        try:
+            classifier.classify(tweet)
+            print(tweet.automatic_classifications)
+        except:
+            continue
