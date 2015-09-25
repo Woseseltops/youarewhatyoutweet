@@ -1,4 +1,3 @@
 Collecting tweets for geertwilder_pvv
 Collecting tweets completed
 Analyzing tweets for user geertwilder_pvv
-Finished analysis

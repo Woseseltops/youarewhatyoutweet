@@ -1,3 +1,7 @@
+646600798621802496	antalvdb	b'@asifa_majid talks about her work at Radboud Science Awards. crowd of kids is captivated. congrats! http://t.co/QLZ9z6QSi1'
+646073311311609864	antalvdb	b'RT @fkunneman: September wordt geen gezellige maand http://t.co/yMCM6Kf2Jj  http://t.co/gD1CTnYgRf #wereallgonnadie #languagemachines #face\xe2\x80\xa6'
+646073255858712576	antalvdb	b'RT @proycon: Released Colibri Core 1: #NLP software for pattern extraction and frequency analysis on corpus data http://t.co/13tWoawHNd #la\xe2\x80\xa6'
+645895020898332672	antalvdb	b'Top 10 leukste functietitels voor vrijwilligerswerk http://t.co/BZIrOHg3aO'
 643065656347357184	antalvdb	b'RT @Mike_Kestemont: Stylometry in the browser, powered by Python: PyStyl. First steps today by @FolgertK. More to come soon! http://t.co/8s\xe2\x80\xa6'
 641510069235023872	antalvdb	b'1 visitor found your page by searching for "qwertyumjkiopyggffdsssqqw."'
 639535449023885312	antalvdb	b'Arjen de Vries appointed as full professor of Information Retrieval http://t.co/EzZsfG9qqv #ifl'
@@ -58,7 +62,6 @@
 591333208110665729	antalvdb	b"RT @FolgertK: Paper on animacy detection accepted at CMN'15 conference in Atlanta! With @antalvdb @TheoMeder and Marten van der Meulen"
 590909687534641153	antalvdb	b'RT @martenduering: Very happy to announce the Historical Network Research Conference 2015 15-18 Sept, chaired and org.ed @fcshunl -&gt; http:/\xe2\x80\xa6'
 590837470322884608	antalvdb	b'Powered by text mining! @textkernel Infographic: De online arbeidsmarkt in Q1 2015 http://t.co/r06Jzxie4C'
-590084609142091776	antalvdb	b'RT @NMTC_CIW_RU: Docent @wspooren (#nmtc) reageert op NRC-artikel (met mening @antalvdb): wordt het nog wat met die vertaalcomputer? http:/\xe2\x80\xa6'
 589890373931167744	antalvdb	b'RT @wol: Fitte tussen hoogleraar &amp; lid Cybersecurityraad Bart Jacobs en BUZA. Over omstreden paspoort-gekopieer http://t.co/SOCmMBFTQU'
 589889311606239232	antalvdb	b'RT @BennieMols: Alle ins en outs van de Wet van Moore - die zijn 50e verjaardag viert - op een rij: http://t.co/BWNVaDtziR http://t.co/cU1n\xe2\x80\xa6'
 589888499094048769	antalvdb	b'RT @srchvrs: Life is too short for "this paper is organized as follows".'
