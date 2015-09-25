@@ -26,6 +26,7 @@ def log(request, user):
 
 def calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,tweets):
 
+    print(len(tweets))
     scores = [tweet.automatic_classifications[classifier_name][classname] for tweet in tweets]
     return int(100*(sum(scores) / len(scores)))
 
@@ -56,9 +57,9 @@ def results(request,user):
             most_extreme_tweets[classifier_name][classname] = all_tweets_sorted_by_confidence_for_this_class[:settings.NUMBER_OF_TWEETS_TO_SHOW_PER_CLASS]
 
             if classifier_section.number_of_tweets_in_score_calculation == 0:
-                tweets_to_use_for_meter_score = most_extreme_tweets[classifier_name][classname]
+                tweets_to_use_for_meter_score = all_tweets_sorted_by_confidence_for_this_class
             else:
-                tweets_to_use_for_meter_score = most_extreme_tweets[classifier_name][classname][:classifier_section.number_of_tweets_in_score_calculation]
+                tweets_to_use_for_meter_score = all_tweets_sorted_by_confidence_for_this_class[:classifier_section.number_of_tweets_in_score_calculation]
 
             meterscores_per_class[classifier_name][classname] = calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,tweets_to_use_for_meter_score)
 
