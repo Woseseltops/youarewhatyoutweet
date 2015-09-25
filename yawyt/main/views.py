@@ -6,6 +6,8 @@ from main.twitterlib.tweet import file_to_tweet_dict, add_annotations_in_files_t
 from main.twitterlib.profile_image import get_profile_image_url
 from main.analysis import start_analysis_thread_for_user
 
+import os
+
 # Create your views here.
 
 
@@ -30,9 +32,18 @@ def calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,twe
     scores = [tweet.automatic_classifications[classifier_name][classname] for tweet in tweets]
     return int(100*(sum(scores) / len(scores)))
 
+def figure_out_username_capitalization(user):
+
+    for filename in os.listdir(settings.TWEET_DATAFOLDER):
+
+        filename_without_extension = filename.replace('.txt','')
+
+        if filename_without_extension.lower() == user.lower():
+            return filename_without_extension
 
 def results(request,user):
 
+    user = figure_out_username_capitalization(user)
     all_tweets_for_user = file_to_tweet_dict(settings.TWEET_DATAFOLDER+user+'.txt')
 
     most_extreme_tweets = {}
