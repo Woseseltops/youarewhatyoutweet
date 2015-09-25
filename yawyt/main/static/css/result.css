@@ -30,3 +30,17 @@
     margin: auto;
     width: 500px;
 }
+
+#logo_section
+{
+    width:900px;
+    margin: auto;
+}
+
+.logo
+{
+    background-color:white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 30px;
+}
