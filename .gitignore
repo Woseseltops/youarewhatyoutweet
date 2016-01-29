@@ -58,3 +58,5 @@ target/
 
 *~
 passwords/
+data/
+.idea/
