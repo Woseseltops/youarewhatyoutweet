@@ -55,7 +55,18 @@ h2
     padding: 15px;
     padding-top: 6px;
     margin: 20px;
-    border-radius: 38px;
+    border-radius: 45px;
+    height: 45px;
+    padding-top: 20px;
+    padding-left: 18px;
+    width: 48px;
+    font-family: 'Muli', sans-serif;
+}
+
+.percentage
+{
+    color: rgba(255,255,255,0.5);
+    font-size: 20px;
 }
 
 .photo_container
@@ -86,4 +97,22 @@ h2
 .photo_container img
 {
 	margin:8px;
+}
+
+.confidence_bubble
+{
+    font-family: 'Muli', sans-serif;
+    font-size: 15px;
+    width: 28px;
+    padding: 12px;
+    margin: auto;
+    left: 250px;
+    position: relative;
+    bottom: 40px;
+    border-radius: 5px;
+}
+
+.confidence_bubble .percentage
+{
+    font-size: 13px;
 }

@@ -2,7 +2,7 @@
 {% load score_visualisation %}
 
 <style>
-.sex_meter .number_bubble
+.sex_meter .number_bubble, .sex_confidence
 {
     background-color:#AD5B13;
 }
@@ -16,6 +16,7 @@
 <h2>Meest mannelijke tweets</h2>
 {% for tweet in most_extreme_tweets.gender_classifier.man %}
 {{ tweet.id|show_tweet }}
+<div class="confidence_bubble sex_confidence">{{ tweet.automatic_classifications.gender_classifier.man|show_fraction_as_percentage }}<span class="percentage">%</span></div>
 {% endfor %}
 
 <div style="height:200px;"></div>
@@ -26,4 +27,5 @@
 <h2>Meest vrouwelijke tweets</h2>
 {% for tweet in most_extreme_tweets.gender_classifier.vrouw %}
 {{ tweet.id|show_tweet }}
+<div class="confidence_bubble sex_confidence">{{ tweet.automatic_classifications.gender_classifier.vrouw|show_fraction_as_percentage }}<span class="percentage">%</span></div>
 {% endfor %}

@@ -2,7 +2,7 @@
 {% load score_visualisation %}
 
 <style>
-.age_meter .number_bubble
+.age_meter .number_bubble, .age_confidence
 {
     background-color:#882828;
 }
@@ -16,6 +16,7 @@
 <h2>Meest tienerachtige tweets</h2>
 {% for tweet in most_extreme_tweets.age_classifier.onder20|slice:":3" %}
 {{ tweet.id|show_tweet }}
+<div class="confidence_bubble age_confidence">{{ tweet.automatic_classifications.age_classifier.onder20|show_fraction_as_percentage }}<span class="percentage">%</span></div>
 {% endfor %}
 
 <div style="height:200px;"></div>
@@ -26,6 +27,7 @@
 <h2>Meest jongvolwassen tweets</h2>
 {% for tweet in most_extreme_tweets.age_classifier.20tot40|slice:":3" %}
 {{ tweet.id|show_tweet }}
+<div class="confidence_bubble age_confidence">{{ tweet.automatic_classifications.age_classifier.20tot40|show_fraction_as_percentage }}<span class="percentage">%</span></div>
 {% endfor %}
 
 <div style="height:200px;"></div>
@@ -36,4 +38,5 @@
 <h2>Meest volwassen tweets</h2>
 {% for tweet in most_extreme_tweets.age_classifier.40plus|slice:":3" %}
 {{ tweet.id|show_tweet }}
+<div class="confidence_bubble age_confidence">{{ tweet.automatic_classifications.age_classifier.40plus|show_fraction_as_percentage }}<span class="percentage">%</span></div>
 {% endfor %}
