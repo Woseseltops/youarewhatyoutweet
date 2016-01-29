@@ -44,6 +44,10 @@ def figure_out_username_capitalization(user):
 def results(request,user):
 
     user = figure_out_username_capitalization(user)
+
+    if user in [None,'']:
+        return HttpResponse('Er is een probleem. Heb je misschien een afgeschermd account?')
+
     all_tweets_for_user = file_to_tweet_dict(settings.TWEET_DATAFOLDER+user+'.txt')
 
     most_extreme_tweets = {}
