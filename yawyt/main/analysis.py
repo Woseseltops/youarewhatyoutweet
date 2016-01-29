@@ -20,7 +20,7 @@ def start_analysis_thread_for_user(user):
 def analyze_tweets_of_user(user):
     refresh_logfile_for_user(user)
     log_progress_for_user('Collecting tweets for '+user, user)
-    tweets = collect_tweets_for_user(user,settings.PASSWORD_FOLDER)
+    tweets = collect_tweets_for_user(user,settings.PASSWORD_FOLDER,exclude_retweets=True)
     tweet_list_to_files_per_author(tweets, settings.TWEET_DATAFOLDER)
     log_progress_for_user('Collecting tweets completed', user)
                   
@@ -33,6 +33,7 @@ def analyze_tweets_of_user(user):
         classifier = classifier_class()
         for tweet in tweets:
             classifier.classify(tweet)
+        classifier.complete()
         
     tweet_annotations_to_files_per_author(tweets,settings.CLASSIFICATION_DATAFOLDER)
     log_progress_for_user('Finished analysis', user)

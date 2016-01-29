@@ -18,18 +18,24 @@ class Classifier():
         self.vocabulary_length = len(self.keys)
         self.vocabulary = {x:i for i, x in enumerate(self.keys)}
 
-    def vectorize(self, text):
+    def vectorize(self, text, underscore = False):
 
+        text = text[2:-1]
         vector = []
-        #self.tokenizer.process(unicode(text.decode('cp1252', 'ignore')))
-        self.tokenizer.process(text)
-        tokens = [x.text for x in self.tokenizer]
-        for i, token in enumerate(tokens):
-            if token[0] == '@':
-                tokens[i] = 'USER'
-            if re.search('^http', token):
-                tokens[i] == 'URL'
-        ngrams = tokens + [' '.join(x) for x in zip(tokens, tokens[1:]) ] + [ ' '.join(x) for x in zip(tokens, tokens[1:], tokens[2:])]
+        if underscore:
+            text = '<s> ' + text + ' <s>'
+            self.tokenizer.process(text)
+            tokens = [x.text for x in self.tokenizer]
+            for i, token in enumerate(tokens):
+                if token[0] == '@':
+                    tokens[i] = 'USER'
+                if re.search('^http', token):
+                    tokens[i] == 'URL'
+            ngrams = tokens + ['_'.join(x) for x in zip(tokens, tokens[1:]) ] + [ ' '.join(x) for x in zip(tokens, tokens[1:], tokens[2:])]
+        else:
+            self.tokenizer.process(text)
+            tokens = [x.text for x in self.tokenizer]          
+            ngrams = tokens + [' '.join(x) for x in zip(tokens, tokens[1:]) ] + [ ' '.join(x) for x in zip(tokens, tokens[1:], tokens[2:])]
         in_vocabulary = [(x, float(ngrams.count(x))) for x in list(set(ngrams) & set(self.keys))]
         vector = [0.0] * self.vocabulary_length
         for ngram in in_vocabulary:
@@ -38,15 +44,9 @@ class Classifier():
 
     def predict_proba(self, vector):
         
+        predict = self.clf.predict(vector)
         proba = self.clf.predict_proba(vector)
         return proba.tolist()[0]
-
-    def predict(self, vector):
-        prediction = self.clf.predict(vector)
-        o = [0, 0, 0]
-        o[int(prediction[0])] = 1
-#        print(prediction, o)
-        return o    
 
     def add_classifications_to_tweet(self, tweet, classifications):
         tweet.automatic_classifications[self.name] = classifications
