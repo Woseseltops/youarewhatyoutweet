@@ -2,7 +2,7 @@ from main.twitterlib.tweet import Tweet
 from twython import TwythonError
 from main.twitterlib import connection
 
-def collect_tweets_for_user(user,passwordfolder):
+def collect_tweets_for_user(user,passwordfolder,exclude_retweets=False):
 
     twitter_connection = connection.create_twitter_connection(passwordfolder)
     no_tweets_received = False
@@ -24,7 +24,8 @@ def collect_tweets_for_user(user,passwordfolder):
 
             for raw_tweet in new_raw_tweets:
                 current_tweet = Tweet(raw_tweet['id'],raw_tweet['user']['screen_name'],clean_tweet_text(raw_tweet['text']))
-                all_tweets.append(current_tweet)
+                if (exclude_retweets and current_tweet.content[2:5] != 'RT ') or not exclude_retweets:             
+                    all_tweets.append(current_tweet)
 
         page += 1
 
