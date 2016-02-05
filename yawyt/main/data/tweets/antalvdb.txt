@@ -1,3 +1,6 @@
+693890858534445057	antalvdb	b"Elsevier stopped me doing my research | Chris H.J. Hartgerink's Notebook https://t.co/F0kEytZKOB"
+693401827556118528	antalvdb	b'@IrisVanRooij @JohanKwisthout @MarkBlokpoel @iris_hx yes! Modules are there. Connecting them is a challenge; how to detect and handle errors'
+693368306070392832	antalvdb	b'@IrisVanRooij @JohanKwisthout @MarkBlokpoel @iris_hx the speech and translations technologies for this are here already (for some time even)'
 688787096627204096	antalvdb	b'Reverse engineering the ResearchGate Score: a good example of a bad metric https://t.co/PnV2Rgbql5'
 688753978339946496	antalvdb	b'We need to talk about TED | Benjamin Bratton https://t.co/n5V53fIAu6'
 687926999470465024	antalvdb	b'Working with text and data mining of scientific literature and data? FutureTDM \xe2\x80\x93 get on board! https://t.co/kkvcj7nAHs'
