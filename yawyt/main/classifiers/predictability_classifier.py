@@ -1,4 +1,5 @@
 from main.classifiers.abstract_classifier import Classifier
+from soothsayer.predictability import get_predictability_for_sentence
 
 class PredictabilityClassifier(Classifier):
     

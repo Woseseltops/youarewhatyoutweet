@@ -1,0 +1,19 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+<style>
+.age_meter .number_bubble, .age_confidence
+{
+    background-color:#882828;
+}
+</style>
+
+<h1>Voorspelbaarheid</h1>
+
+<div class="age_meter">{{ meterscores_per_class.predictability_classifier.predictability|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest voorspelbare tweets</h2>
+{% for tweet in most_extreme_tweets.predictability_classifier.predictability|slice:":5" %}
+{{ tweet.id|show_tweet }}
+<div class="confidence_bubble age_confidence">{{ meterscores_per_class.predictability_classifier.predictability }}<span class="percentage">%</span></div>
+{% endfor %}

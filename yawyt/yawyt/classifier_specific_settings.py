@@ -1,0 +1,1 @@
+SOOTHSAYER_SERVER_URL = 'http://soothsayer.cls.ru.nl/'
