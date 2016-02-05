@@ -1,11 +1,11 @@
 import numpy
 from scipy import sparse
-from main.classifiers.abstract_classifier import Classifier
+from main.classifiers.abstract_sklearn_classifier import SklearnClassifier
 
-class AgeClassifier(Classifier):
+class AgeClassifier(SklearnClassifier):
 
     def __init__(self):
-        Classifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/aclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/av.txt')
+        SklearnClassifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/aclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/av.txt')
         self.name = 'age_classifier'
 
     def classify(self, tweet):

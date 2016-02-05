@@ -1,11 +1,11 @@
 import numpy
-from main.classifiers.abstract_classifier import Classifier
+from main.classifiers.abstract_sklearn_classifier import SklearnClassifier
 
-class AggressionClassifier(Classifier):
+class AggressionClassifier(SklearnClassifier):
 
     def __init__(self):
 
-        Classifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sv.txt')
+        SklearnClassifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sv.txt')
         with open('/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/sw1.txt') as weights_file:
             self.weights = numpy.array([float(x.strip()) for x in weights_file.readlines()])
         self.name = 'aggression_classifier'

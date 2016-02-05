@@ -1,13 +1,13 @@
 import numpy
-from main.classifiers.abstract_classifier import Classifier
+from main.classifiers.abstract_sklearn_classifier import SklearnClassifier
 
-class GenderClassifier(Classifier):
+class GenderClassifier(SklearnClassifier):
 
     name = 'gender_classifier'
 
     def __init__(self):
 
-        Classifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gv.txt')
+        SklearnClassifier.__init__(self, '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gclf.joblib.pkl', '/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gv.txt')
         with open('/scratch2/www/yawyt3/repo/youarewhatyoutweet/yawyt/main/classifiers/gw.txt') as weights_file:
             self.weights = [float(x.strip()) for x in weights_file.readlines()]
         self.name = 'gender_classifier'
