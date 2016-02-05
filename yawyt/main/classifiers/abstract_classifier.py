@@ -8,3 +8,6 @@ class Classifier():
     def classify(self,tweet):
 
         raise NotImplementedError
+
+    def complete(self):
+        pass
