@@ -1,3 +1,4 @@
-* De nieuwe grotere plaatjes moeten nog mooi in het midden
-* Homeknop
-* Al een begin maken met 'geef de vijf hoogste tweets', 'geef de vijf laagste tweets', etc.
+* Soothsayer
+  * Is this the best we can do?
+* Valkuil
+* Caching
