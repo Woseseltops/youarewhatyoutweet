@@ -16,10 +16,47 @@
         //Add the embedded tweets
         $(document).ready(function()
         {
-            $('.tweet').each( function()
+            function UpdateAllTweetRepresentations()
             {
-                twttr.widgets.createTweet(this.id,this);
-            });
+                $('.tweet').each( function()
+                {
+                    twttr.widgets.createTweet(this.id,this);
+                });
+            }
+
+            function UpdateAllAjaxContentAreas()
+            {
+                var currentContentSlot;
+
+                $('.ajax_content').each(function()
+                {
+                    if($(this).attr('filled') == true)
+                    {
+                        return true;
+                    }
+
+                    console.log('Got here');
+
+                    currentContentSlot = $(this);
+
+                    $.get('/results/{{ twitter_user }}/'+currentContentSlot.attr('ajax_url_extension'), function(data)
+                    {
+                        if (data != '-1')
+                        {
+                            currentContentSlot.html(data);
+                            currentContentSlot.attr('filled',true);
+                            UpdateAllTweetRepresentations();
+                        }
+                    });
+                });
+
+            };
+
+            var allClassifiersReady = false;
+            UpdateAllAjaxContentAreas();
+            UpdateAllTweetRepresentations();
+            window.setInterval(UpdateAllAjaxContentAreas,1000);
+
         });
     </script>
 

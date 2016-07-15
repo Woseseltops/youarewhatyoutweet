@@ -61,7 +61,7 @@ def individual_classifier_result(request,user,classifier_name):
         add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER + user + '.' + classifier_name + '_classifier.txt',
                                    classifier_name, all_tweets_for_user)
     except FileNotFoundError:
-        return render(request,'classifier_still_analyzing.html')
+        return HttpResponse(-1);
 
     # Prepare saving the most extreme scores for each class for this classifier
     most_extreme_tweets = {}
@@ -87,7 +87,8 @@ def individual_classifier_result(request,user,classifier_name):
         meterscores_per_class[classname] = calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,tweets_to_use_for_meter_score)
 
     return render(request, classifier_name+'_content.html',
-                  {'most_extreme_tweets': most_extreme_tweets,
+                  {
+                   'most_extreme_tweets': most_extreme_tweets,
                    'meterscores_per_class': meterscores_per_class,
                    'profile_image_url': get_profile_image_url(user, settings.PASSWORD_FOLDER)})
 
@@ -128,7 +129,8 @@ def results_overview(request,user):
 
             meterscores_per_class[classifier_name][classname] = calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,tweets_to_use_for_meter_score)
 
-    return render(request,'result_overview.html',{'classifier_sections':ClassifierSection.objects.all().order_by('position'),
+    return render(request,'result_overview.html',{'twitter_user':user,
+                                                  'classifier_sections':ClassifierSection.objects.all().order_by('position'),
                                                   'most_extreme_tweets':most_extreme_tweets,
                                                   'meterscores_per_class': meterscores_per_class,
                                                   'profile_image_url':get_profile_image_url(user,settings.PASSWORD_FOLDER )})
