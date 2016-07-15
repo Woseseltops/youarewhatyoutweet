@@ -3,6 +3,11 @@ import re
 import ucto
 from main.classifiers.abstract_classifier import Classifier
 
+def warn(*args, **kwargs):
+    pass
+import warnings
+warnings.warn = warn
+
 class SklearnClassifier(Classifier):
 
     def __init__(self, model, vocab):
