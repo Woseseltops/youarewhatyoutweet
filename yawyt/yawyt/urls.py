@@ -22,7 +22,8 @@ import main
 urlpatterns = [
     url(r'^$', 'main.views.twittername_entry'),
     url(r'^analyze/(?P<user>.*)$', 'main.views.analyze'),
-    url(r'^results/(?P<user>.*)$', 'main.views.results'),
+    url(r'^results/(?P<user>.*)/(?P<classifier_name>.*)$', 'main.views.individual_classifier_result'),
+    url(r'^results/(?P<user>.*)$', 'main.views.results_overview'),
     url(r'^log/(?P<user>.*)$', 'main.views.log'),
     url(r'^admin/', include(admin.site.urls)),
 ]

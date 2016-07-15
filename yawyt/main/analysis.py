@@ -4,7 +4,9 @@ from main.classifiers import gender_classifier, age_classifier, aggression_class
 from main.models import ClassifierSection
 import yawyt.settings as settings
 import importlib
+
 from threading import Thread
+from multiprocessing import Process, Queue
 
 def start_analysis_thread_for_user(user):
 
@@ -14,8 +16,15 @@ def start_analysis_thread_for_user(user):
 
     Thread(target=analyze_tweets_of_user,args=([user])).start()
 
+def classify_tweets_with_classifier(classifier,tweets,finished_classifiers_queue):
 
+    for tweet in tweets:
+        classifier.classify(tweet)
 
+    classifier.complete()
+    tweet_annotations_to_files_per_author(tweets,settings.CLASSIFICATION_DATAFOLDER)
+
+    finished_classifiers_queue.put(classifier)
 
 def analyze_tweets_of_user(user):
     refresh_logfile_for_user(user)
@@ -25,19 +34,29 @@ def analyze_tweets_of_user(user):
     log_progress_for_user('Collecting tweets completed', user)
                   
     log_progress_for_user('Analyzing tweets for user '+user, user)
-                        
+
+    finished_classifiers = Queue()
+    nr_of_classifiers = len(ClassifierSection.objects.all())
+
     for classifier_section in ClassifierSection.objects.all():
-        print(classifier_section)
         classifier_module = importlib.import_module('main.classifiers.'+classifier_section.classifier_module_name)
         classifier_class = getattr(classifier_module,classifier_section.classifier_class_name)
         classifier = classifier_class()
-        for tweet in tweets:
-            classifier.classify(tweet)
-        classifier.complete()
-        
-    tweet_annotations_to_files_per_author(tweets,settings.CLASSIFICATION_DATAFOLDER)
-    log_progress_for_user('Finished analysis', user)
-                                                                                
+
+        Process(target=classify_tweets_with_classifier,args=[classifier,tweets,finished_classifiers]).start()
+
+    #Here, we check the number of finished classifier one by one, to prevent them writing to the log file at the same time
+    nr_of_finished_classifiers = 0
+
+    while True:
+
+        if nr_of_finished_classifiers < finished_classifiers.qsize():
+            nr_of_finished_classifiers = finished_classifiers.qsize()
+            log_progress_for_user('Finished analysis '+str(nr_of_finished_classifiers)+'/'+str(nr_of_classifiers), user)
+
+            if nr_of_finished_classifiers == nr_of_classifiers:
+                break
+
 def refresh_logfile_for_user(user):
     open(settings.ANALYSIS_LOGFOLDER+user+'.txt','w')
 

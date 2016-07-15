@@ -21,7 +21,8 @@
                 last_message = messages[messages.length-2];
 
                 //Redirect to the results if you got the last message
-                if (last_message == 'Finished analysis')
+                console.log(last_message.substring(0,16))
+                if (last_message.substring(0,17) == 'Finished analysis')
                 {
                     window.location.assign('/results/{{ user }}');
                 }
