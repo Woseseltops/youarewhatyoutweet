@@ -1,4 +1,0 @@
-Collecting tweets for iris-hx
-Collecting tweets completed
-Analyzing tweets for user iris-hx
-Finished analysis

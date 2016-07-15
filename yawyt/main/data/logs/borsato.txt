@@ -1,3 +1,0 @@
-Collecting tweets for borsato
-Collecting tweets completed
-Analyzing tweets for user borsato

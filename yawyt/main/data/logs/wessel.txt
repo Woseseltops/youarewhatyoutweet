@@ -1,3 +1,0 @@
-Collecting tweets for wessel
-Collecting tweets completed
-Analyzing tweets for user wessel

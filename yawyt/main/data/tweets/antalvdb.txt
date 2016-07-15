@@ -1,3 +1,22 @@
+752951839063150592	antalvdb	b'UK scientists dropped from EU projects because of post-Brexit funding fears https://t.co/YhDLiua10U'
+752155456127299584	antalvdb	b'@gchrupala sounds familiar'
+746376989330792448	antalvdb	b'The common European academic landscape is under threat after Brexit https://t.co/c8P0ByQ1K5 via @timeshighered'
+743419257531338752	antalvdb	b'LaMa poster session #languagemachines https://t.co/7dpphJYs6N'
+724660067518296064	antalvdb	b'To do-lijst voor de drukke sukkel https://t.co/Vgfr6GefR9 via @nrc'
+720309845228974081	antalvdb	b'Announcing the Text Mining Hackathon https://t.co/FnH41EKx3I'
+714732299699486721	antalvdb	b"How Linguisticator and 'memory palaces' can teach you a new language in weeks | Cambridge News https://t.co/3vEqgCcrv9 via @CambridgeNewsUK"
+712544227666882565	antalvdb	b'@toinebogers @mariluberlin awesomeness! Congratulations'
+711560642059182080	antalvdb	b'Essay on why academics feel overworked https://t.co/1lhokJijKc'
+705778968222425088	antalvdb	b'Help de computer de Nederlandse politiek te begrijpen https://t.co/iqcPAfIf8y #voxpopuli #languagemachines'
+705693555768074240	antalvdb	b'Hun hebben gespelt - https://t.co/K5aorhTHEI #valkuil'
+702225191426990084	antalvdb	b'@tjaap een van de vele redenen waarom we heel blij mogen zijn met computers'
+699596456248926209	antalvdb	b'Why are there no official Word templates at ACL 2016? Pub chair Yannick Versley explains https://t.co/QhxQywHAnm'
+699299835594276864	antalvdb	b'@suzan @arjenpdevries 3 maanden is goede benadering. Moeilijk precies in tijd uit te drukken (altijd in achterhoofd mee bezig)'
+698083870177153024	antalvdb	b'How big is the indexed web? A student project from 2006 that kept running ever since https://t.co/0etWdHTkMa #languagemachines'
+698076770315214848	antalvdb	b'Why sarcasm is such a problem in artificial intelligence https://t.co/T0nqi9GCT6 @christineliebr @fkunneman #languagemachines'
+696693214141612032	antalvdb	b'leuke blog @christineliebr ! @fkunneman'
+696691250674733056	antalvdb	b'(on)begrijpelijke ironie - https://t.co/i8LwtToHzx @fkunneman #languagemachines'
+696679904054812673	antalvdb	b"Assistant Professor 'Computational Modelling of Language and Communication', AI dept, RU https://t.co/NAdmdwzGIQ"
 693890858534445057	antalvdb	b"Elsevier stopped me doing my research | Chris H.J. Hartgerink's Notebook https://t.co/F0kEytZKOB"
 693401827556118528	antalvdb	b'@IrisVanRooij @JohanKwisthout @MarkBlokpoel @iris_hx yes! Modules are there. Connecting them is a challenge; how to detect and handle errors'
 693368306070392832	antalvdb	b'@IrisVanRooij @JohanKwisthout @MarkBlokpoel @iris_hx the speech and translations technologies for this are here already (for some time even)'
