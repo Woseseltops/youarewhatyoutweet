@@ -1,0 +1,22 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+<h2>Mannelijkheidscore</h2>
+<div class="sex_meter">{{ meterscores_per_class.man|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest mannelijke tweets</h2>
+{% for tweet in most_extreme_tweets.man %}
+{{ tweet.id|show_tweet }}
+<div class="confidence_bubble sex_confidence">{{ tweet.automatic_classifications.gender.man|show_fraction_as_percentage }}<span class="percentage">%</span></div>
+{% endfor %}
+
+<div style="height:200px;"></div>
+
+<h2>Vrouwelijkheidscore</h2>
+<div class="sex_meter">{{ meterscores_per_class.vrouw|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest vrouwelijke tweets</h2>
+{% for tweet in most_extreme_tweets.vrouw %}
+{{ tweet.id|show_tweet }}
+<div class="confidence_bubble sex_confidence">{{ tweet.automatic_classifications.gender.vrouw|show_fraction_as_percentage }}<span class="percentage">%</span></div>
+{% endfor %}
