@@ -11,10 +11,3 @@
 
 <h1>Agressie</h1>
 
-<div class="aggression_meter">{{ meterscores_per_class.aggression_classifier.aggressive |show_score_visualisation:profile_image_url }}</div>
-
-<h2>Meest agressieve tweets</h2>
-{% for tweet in most_extreme_tweets.aggression_classifier.aggressive %}
-{{ tweet.id|show_tweet }}
-<div class="confidence_bubble aggression_confidence">{{ tweet.automatic_classifications.aggression_classifier.aggressive|show_fraction_as_percentage }}<span class="percentage">%</span></div>
-{% endfor %}

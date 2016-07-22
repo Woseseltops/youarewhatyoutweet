@@ -16,9 +16,9 @@
         //Add the embedded tweets
         $(document).ready(function()
         {
-            function UpdateAllTweetRepresentations()
+            function UpdateAllTweetRepresentationsInsideDiv(div_selector)
             {
-                $('.tweet').each( function()
+                $(div_selector+ ' .tweet').each( function()
                 {
                     twttr.widgets.createTweet(this.id,this);
                 });
@@ -30,12 +30,10 @@
 
                 $('.ajax_content').each(function()
                 {
-                    if($(this).attr('filled') == true)
+                    if($(this).attr('filled') == 'true')
                     {
                         return true;
                     }
-
-                    console.log('Got here');
 
                     currentContentSlot = $(this);
 
@@ -43,18 +41,23 @@
                     {
                         if (data != '-1')
                         {
-                            currentContentSlot.html(data);
-                            currentContentSlot.attr('filled',true);
-                            UpdateAllTweetRepresentations();
+                            //A work-around to remember which section sent this request
+                            url = $(this)[0].url;
+                            section_name = url.substr(url.lastIndexOf('/') + 1);
+                            div_id = '#'+section_name+'_dynamic_content';
+
+                            $(div_id).html(data);
+                            $(div_id).attr('filled',true);
+
+         		    UpdateAllTweetRepresentationsInsideDiv(div_id);
                         }
                     });
                 });
-
             };
 
             var allClassifiersReady = false;
             UpdateAllAjaxContentAreas();
-            UpdateAllTweetRepresentations();
+            //UpdateAllTweetRepresentations();
             window.setInterval(UpdateAllAjaxContentAreas,1000);
 
         });
@@ -108,6 +111,13 @@ van een aggressieve tweet, of op ons modellen van tweets van vrouwen of tieners?
 {% with ""|add:classifier_section.template_name|add:".html" as template %}
 {% include template %}
 {% endwith %}
+
+<div class="ajax_content" filled=false id="{{ classifier_section.template_name }}_dynamic_content" ajax_url_extension="{{ classifier_section.template_name }}">    
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
 
 </div>
 
