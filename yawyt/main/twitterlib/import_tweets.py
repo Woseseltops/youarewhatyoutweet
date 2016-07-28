@@ -1,6 +1,7 @@
 from main.twitterlib.tweet import Tweet
 from twython import TwythonError
 from main.twitterlib import connection
+from yawyt import settings
 
 def collect_tweets_for_user(user,passwordfolder,exclude_retweets=False):
 
@@ -14,7 +15,6 @@ def collect_tweets_for_user(user,passwordfolder,exclude_retweets=False):
         try:
             new_raw_tweets = twitter_connection.get_user_timeline(screen_name=user,count=200,page=page)
         except TwythonError:
-            new_raw_tweets = []
             print('Twython is sad :(')
             break
 
@@ -26,6 +26,9 @@ def collect_tweets_for_user(user,passwordfolder,exclude_retweets=False):
                 current_tweet = Tweet(raw_tweet['id'],raw_tweet['user']['screen_name'],clean_tweet_text(raw_tweet['text']))
                 if (exclude_retweets and current_tweet.content[2:5] != 'RT ') or not exclude_retweets:             
                     all_tweets.append(current_tweet)
+
+        if settings.MAXIMUM_NUMBER_OF_TWEETS_TO_IMPORT != None and len(all_tweets) >= settings.MAXIMUM_NUMBER_OF_TWEETS_TO_IMPORT:
+            break
 
         page += 1
 
