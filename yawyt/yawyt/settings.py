@@ -108,8 +108,9 @@ USE_TZ = True
 PROJECT_ROOT = '/home/wstoop/yawyt/repo/youarewhatyoutweet/yawyt/'
 STATIC_URL = '/static/'
 
-MAXIMUM_NUMBER_OF_TWEETS_TO_IMPORT = 30 #None to disable
+MAXIMUM_NUMBER_OF_TWEETS_TO_IMPORT = 10 #None to disable
 NUMBER_OF_TWEETS_TO_SHOW_PER_CLASS = 5
+NUMBER_OF_PARALLEL_CLASSIFICATION_PROCESSES = 15
 
 DATAROOT = BASE_DIR + 'main/data/'
 TWEET_DATAFOLDER = DATAROOT+'tweets/'
