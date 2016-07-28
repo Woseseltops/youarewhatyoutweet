@@ -2,18 +2,10 @@
 {% load score_visualisation %}
 
 <style>
-.predictability_meter .number_bubble, .preditability_confidence
+.predictability_meter .number_bubble, .predictability_confidence
 {
-    background-color:#9B5608;
+    background-color:hsl(0, 56%, 48%);
 }
 </style>
 
 <h1>Voorspelbaarheid</h1>
-
-<div class="predictability_meter">{{ meterscores_per_class.predictability_classifier.predictability|show_score_visualisation:profile_image_url }}</div>
-
-<h2>Meest voorspelbare tweets</h2>
-{% for tweet in most_extreme_tweets.predictability_classifier.predictability|slice:":5" %}
-{{ tweet.id|show_tweet }}
-<div class="confidence_bubble predictability_confidence">{{ meterscores_per_class.predictability_classifier.predictability }}<span class="percentage">%</span></div>
-{% endfor %}

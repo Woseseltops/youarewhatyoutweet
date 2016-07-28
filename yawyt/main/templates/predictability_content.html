@@ -1,0 +1,12 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+<p>Hoeveel karakters kunnen we in jouw tweets voorspellen?</p>
+
+<div class="predictability_meter">{{ meterscores_per_class.predictability|show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest voorspelbare tweets</h2>
+{% for tweet in most_extreme_tweets.predictability|slice:":5" %}
+{{ tweet.id|show_tweet }}
+<div class="confidence_bubble predictability_confidence">{{ tweet.automatic_classifications.predictability.predictability|show_fraction_as_percentage }}<span class="percentage">%</span></div>
+{% endfor %}
