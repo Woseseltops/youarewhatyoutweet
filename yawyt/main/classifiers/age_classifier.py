@@ -12,3 +12,4 @@ class AgeClassifier(SklearnClassifier):
         vector = numpy.array([1 if x > 0 else 0 for x in self.vectorize(tweet.content)])
         classification = self.predict_proba(vector)
         self.add_classifications_to_tweet(tweet, {'onder20' : classification[0], '20tot40' : classification[1], '40plus' : classification[2]})
+        return tweet

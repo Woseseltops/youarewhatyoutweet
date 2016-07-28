@@ -18,6 +18,6 @@ class GenderClassifier(SklearnClassifier):
             vector = numpy.array(self.vectorize(tweet.content)) * numpy.array(self.weights)
             classification = self.predict_proba(vector)
             self.add_classifications_to_tweet(tweet, {'man' : classification[1], 'vrouw': classification[0]})
-
+        return tweet
 
 	

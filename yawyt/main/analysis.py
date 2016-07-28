@@ -6,7 +6,7 @@ import yawyt.settings as settings
 import importlib
 
 from threading import Thread
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue, Pool
 
 def start_analysis_thread_for_user(user):
 
@@ -18,8 +18,8 @@ def start_analysis_thread_for_user(user):
 
 def classify_tweets_with_classifier(classifier,tweets,finished_classifiers_queue):
 
-    for tweet in tweets:
-        classifier.classify(tweet)
+    pool = Pool(settings.NUMBER_OF_PARALLEL_CLASSIFICATION_PROCESSES)
+    tweets = pool.map(classifier.classify, tweets)
 
     classifier.complete()
     tweet_annotations_to_files_per_author(tweets,settings.CLASSIFICATION_DATAFOLDER)

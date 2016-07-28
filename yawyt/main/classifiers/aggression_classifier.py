@@ -14,3 +14,4 @@ class AggressionClassifier(SklearnClassifier):
         vector = numpy.array(self.vectorize(tweet.content.lower(), underscore = True)) * self.weights
         classification = self.predict_proba(vector)
         self.add_classifications_to_tweet(tweet, {'aggressive' : classification[0]})
+        return tweet

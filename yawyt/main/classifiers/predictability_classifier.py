@@ -8,5 +8,5 @@ class PredictabilityClassifier(Classifier):
 
     def classify(self,tweet):
         predictability = get_predictability_for_sentence(tweet.content,SOOTHSAYER_BASE_LOCATION,SOOTHSAYER_MODEL_LOCATION)
-        print('predictability',predictability)
         self.add_classifications_to_tweet(tweet,{'predictability':predictability})
+        return tweet
