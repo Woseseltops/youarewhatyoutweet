@@ -28,7 +28,6 @@ def log(request, user):
 
 def calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,tweets):
 
-    print(len(tweets))
     scores = [tweet.automatic_classifications[classifier_name][classname] for tweet in tweets]
     return int(100*(sum(scores) / len(scores)))
 
