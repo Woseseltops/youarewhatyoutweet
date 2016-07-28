@@ -16,7 +16,7 @@
 <div class="age_meter">{{ meterscores_per_class.20tot40|show_score_visualisation:profile_image_url }}</div>
 
 <h2>Meest jongvolwassen tweets</h2>
-{% for tweet in most_extreme_tweets.age_classifier.20tot40|slice:":3" %}
+{% for tweet in most_extreme_tweets.20tot40|slice:":3" %}
 {{ tweet.id|show_tweet }}
 <div class="confidence_bubble age_confidence">{{ tweet.automatic_classifications.age.20tot40|show_fraction_as_percentage }}<span class="percentage">%</span></div>
 {% endfor %}
