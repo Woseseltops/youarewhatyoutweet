@@ -57,9 +57,14 @@ def file_to_tweet_dict(filepath):
 
 def add_annotations_in_files_to_tweets(filepath,label,tweetlist):
 
+    annotated_tweets = []
+
     for line in open(filepath):
         tweet_id, json_annotations = line.strip().split('\t')
         tweetlist[tweet_id].automatic_classifications[label] = json.loads(json_annotations)
+        annotated_tweets.append(tweetlist[tweet_id])
+
+    return annotated_tweets
 
 if __name__ == '__main__':
 
