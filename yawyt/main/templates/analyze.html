@@ -15,7 +15,7 @@
         //This repeatedly updates the progress of the analysis process
         function update_log()
         {
-            $.get('/log/{{ user }}', function(data)
+            $.get('{{URL}}/log/{{ user }}', function(data)
             {
                 messages = data.split('\n');
                 last_message = messages[messages.length-2];
@@ -24,7 +24,7 @@
                 console.log(last_message.substring(0,16))
                 if (last_message.substring(0,17) == 'Finished analysis')
                 {
-                    window.location.assign('/results/{{ user }}');
+                    window.location.assign('{{URL}}/results/{{ user }}');
                 }
 
                 $('#latest_status').html('<p>'+last_message+'</p>');

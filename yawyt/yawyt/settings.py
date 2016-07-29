@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'yawyt.context_processors.url'
             ],
         },
     },
@@ -106,7 +107,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 PROJECT_ROOT = '/home/wstoop/yawyt/repo/youarewhatyoutweet/yawyt/'
-STATIC_URL = '/static/'
+URL = '/youarewhatyoutweet'
+STATIC_URL = URL+'/static/'
 
 CACHING = True
 CACHING_RECENCY_BOUNDARY = 3000000

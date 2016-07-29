@@ -37,7 +37,7 @@
 
                     currentContentSlot = $(this);
 
-                    $.get('/results/{{ twitter_user }}/'+currentContentSlot.attr('ajax_url_extension'), function(data)
+                    $.get('{{URL}}/results/{{ twitter_user }}/'+currentContentSlot.attr('ajax_url_extension'), function(data)
                     {
                         if (data != '-1')
                         {
@@ -78,7 +78,7 @@
 {% endfor %}
 
 <div class="section" id="s0">
-<a href="/" style="color: white;"><div style="margin: auto; margin-top: -25px; margin-bottom: 15px; width: 20px;" class="home icon"><i style="font-size:35px;
+<a href="{{URL}}/" style="color: white;"><div style="margin: auto; margin-top: -25px; margin-bottom: 15px; width: 20px;" class="home icon"><i style="font-size:35px;
 margin: auto;
 width: 37px;
 margin-top: 6px;

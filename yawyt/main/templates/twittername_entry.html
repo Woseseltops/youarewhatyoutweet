@@ -19,7 +19,7 @@
             $("input").change(function()
             {
                 var action = $(this).val();
-                $("form").attr("action", "/analyze/" + action);
+                $("form").attr("action", "{{URL}}/analyze/" + action);
             });
         });
 
@@ -31,8 +31,8 @@
 		<div class="enterfield">
             <form method="GET" action="analyze"><label>@</label><input name="user" class="text-input"><input class="button" type="submit" value="Analyzeer!"></form>
         </div>
-        <p class="suggestions">Suggesties: <a href="results/jochemmyjer">jochemmyjer</a>, <a href="results/sylviawitteman">sylviawitteman</a>,
-            <a href="results/willemhoIIeeder">willemhoIIeeder</a>, <a href="results/geertwilderspvv">geertwilderspvv</a> </p>
+        <p class="suggestions">Suggesties: <a href="{{URL}}/results/jochemmyjer">jochemmyjer</a>, <a href="{{URL}}/results/sylviawitteman">sylviawitteman</a>,
+            <a href="{{URL}}/results/willemhoIIeeder">willemhoIIeeder</a>, <a href="{{URL}}/results/geertwilderspvv">geertwilderspvv</a> </p>
 	</div>
 
 </body>
