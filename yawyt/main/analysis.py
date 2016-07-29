@@ -4,6 +4,8 @@ from main.classifiers import gender_classifier, age_classifier, aggression_class
 from main.models import ClassifierSection
 import yawyt.settings as settings
 import importlib
+import os
+import time
 
 from threading import Thread
 from multiprocessing import Process, Queue, Pool
@@ -13,6 +15,15 @@ def start_analysis_thread_for_user(user):
     #Remove the @ if the user put it in
     if user[:3] == '%40':
         user = user[3:]
+
+    #Skip if recent data are already found
+    if settings.CACHING:
+        first_classifier_name = ClassifierSection.objects.all()[0].classifier_module_name
+        first_classifier_output_path = settings.CLASSIFICATION_DATAFOLDER + user + '.' + first_classifier_name + '.txt'
+
+        if os.path.isfile(first_classifier_output_path) and \
+            time.time() - os.path.getmtime(first_classifier_output_path) < settings.CACHING_RECENCY_BOUNDARY:
+            return
 
     Thread(target=analyze_tweets_of_user,args=([user])).start()
 
