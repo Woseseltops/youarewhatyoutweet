@@ -43,7 +43,12 @@ def analyze_tweets_of_user(user):
         classifier_class = getattr(classifier_module,classifier_section.classifier_class_name)
         classifier = classifier_class()
 
-        Process(target=classify_tweets_with_classifier,args=[classifier,tweets,finished_classifiers]).start()
+        if classifier_section.number_of_tweets_to_analyze == 0:
+            tweets_to_analyze = tweets
+        else:
+            tweets_to_analyze = tweets[:classifier_section.number_of_tweets_to_analyze]
+
+        Process(target=classify_tweets_with_classifier,args=[classifier,tweets_to_analyze,finished_classifiers]).start()
 
     #Here, we check the number of finished classifier one by one, to prevent them writing to the log file at the same time
     nr_of_finished_classifiers = 0

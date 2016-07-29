@@ -57,7 +57,8 @@ def individual_classifier_result(request,user,classifier_name):
     all_tweets_for_user = file_to_tweet_dict(settings.TWEET_DATAFOLDER+user+'.txt')
 
     try:
-        add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER + user + '.' + classifier_name + '_classifier.txt',
+        #Annotated tweets group may be smaller than group of all tweets
+        annotated_tweets = add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER + user + '.' + classifier_name + '_classifier.txt',
                                    classifier_name, all_tweets_for_user)
     except FileNotFoundError:
         return HttpResponse(-1);
@@ -68,11 +69,11 @@ def individual_classifier_result(request,user,classifier_name):
 
     # See what classes there are for this classifier, by taking them from a random tweet
     classes_for_this_classifier = list(
-        all_tweets_for_user[list(all_tweets_for_user.keys())[0]].automatic_classifications[classifier_name].keys())
+        annotated_tweets[0].automatic_classifications[classifier_name].keys())
 
     # For each class, take the most extreme cases
     for classname in classes_for_this_classifier:
-        all_tweets_sorted_by_confidence_for_this_class = sorted(all_tweets_for_user.values(), key=lambda tweet:
+        all_tweets_sorted_by_confidence_for_this_class = sorted(annotated_tweets, key=lambda tweet:
         tweet.automatic_classifications[classifier_name][classname], reverse=True)
         most_extreme_tweets[classname] = all_tweets_sorted_by_confidence_for_this_class[
                                                           :settings.NUMBER_OF_TWEETS_TO_SHOW_PER_CLASS]
