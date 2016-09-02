@@ -29,12 +29,17 @@ def start_analysis_thread_for_user(user):
 
 def classify_tweets_with_classifier(classifier,tweets,finished_classifiers_queue):
 
+    #First train if necessary
+    if not classifier.fixed_model:
+        classifier.train(tweets)
+
+    #Don't process all tweets in parallel
     pool = Pool(settings.NUMBER_OF_PARALLEL_CLASSIFICATION_PROCESSES)
     tweets = pool.map(classifier.classify, tweets)
 
+    #we're done, save the results and tell the rest we're done
     classifier.complete()
     tweet_annotations_to_files_per_author(tweets,settings.CLASSIFICATION_DATAFOLDER)
-
     finished_classifiers_queue.put(classifier)
 
 def analyze_tweets_of_user(user):
