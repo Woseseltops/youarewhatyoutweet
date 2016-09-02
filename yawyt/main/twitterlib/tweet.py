@@ -20,6 +20,9 @@ def tweet_list_to_files_per_author(tweetlist,folderpath):
 
     for tweet in tweetlist:
 
+        if tweet == None:
+            continue
+
         if tweet.author not in files.keys():
             files[tweet.author] = open(folderpath+tweet.author+'.txt','w')
 
@@ -30,6 +33,9 @@ def tweet_annotations_to_files_per_author(tweetlist,folderpath):
     files = {}
 
     for tweet in tweetlist:
+
+        if tweet == None:
+            continue
 
         if tweet.author not in files.keys():
             files[tweet.author] = {}
