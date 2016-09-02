@@ -1,0 +1,18 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+voetbal
+
+{% for tweet in most_extreme_tweets.voetbal %}
+{{ tweet.text }}
+{{ tweet.automatic_classifications.terms.voetbal }}
+...
+{% endfor %}
+
+koken
+
+{% for tweet in most_extreme_tweets.koken %}
+{{ tweet.text }}
+{{ tweet.automatic_classifications.terms.koken }}
+...
+{% endfor %}
