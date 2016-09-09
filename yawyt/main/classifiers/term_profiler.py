@@ -13,9 +13,17 @@ class TermProfiler(Classifier):
         for tweet in tweets:
             pass
 
-        self.chosen_terms = ['voetbal','koken','Game_of_Thrones']
+        self.chosen_terms = ['language']
 
     def classify(self, tweet):
 
-        self.add_classifications_to_tweet(tweet,{term: 1 for term in self.chosen_terms})
+        classifications = {term: 0 for term in self.chosen_terms}
+
+        for term in self.chosen_terms:
+            if term in tweet.content:
+                classifications[term] = 1
+
+        print(classifications)
+
+        self.add_classifications_to_tweet(tweet,classifications)
         return tweet
