@@ -1,0 +1,12 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+{% for topic, tweets in most_extreme_tweets.items %}
+
+<h2>{{topic}}</h2>
+
+{% for tweet in tweets %}
+{{ tweet.id|show_tweet }}
+{% endfor %}
+
+{% endfor %}

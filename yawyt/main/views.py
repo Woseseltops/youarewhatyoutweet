@@ -47,7 +47,7 @@ def individual_classifier_result(request,user,classifier_name):
 
     for classifier_section in ClassifierSection.objects.all():
 
-        if classifier_section.classifier_module_name == classifier_name+'_classifier':
+        if classifier_section.classifier_module_name in [classifier_name+'_classifier',classifier_name]:
             classifier = classifier_section
             break
 
@@ -58,7 +58,7 @@ def individual_classifier_result(request,user,classifier_name):
 
     try:
         #Annotated tweets group may be smaller than group of all tweets
-        annotated_tweets = add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER + user + '.' + classifier_name + '_classifier.txt',
+        annotated_tweets = add_annotations_in_files_to_tweets(settings.CLASSIFICATION_DATAFOLDER + user + '.' + classifier.classifier_module_name + '.txt',
                                    classifier_name, all_tweets_for_user)
     except FileNotFoundError:
         return HttpResponse(-1);
@@ -85,6 +85,8 @@ def individual_classifier_result(request,user,classifier_name):
                                             :classifier_section.number_of_tweets_in_score_calculation]
 
         meterscores_per_class[classname] = calculate_meterscore_for_class_based_on_tweets(classifier_name,classname,tweets_to_use_for_meter_score)
+
+        print(most_extreme_tweets)
 
     return render(request, classifier_name+'_content.html',
                   {
