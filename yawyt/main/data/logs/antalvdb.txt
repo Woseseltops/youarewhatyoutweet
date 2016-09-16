@@ -1,7 +1,0 @@
-Collecting tweets for antalvdb
-Collecting tweets completed
-Analyzing tweets for user antalvdb
-Finished analysis 1/4
-Finished analysis 2/4
-Finished analysis 3/4
-Finished analysis 4/4
