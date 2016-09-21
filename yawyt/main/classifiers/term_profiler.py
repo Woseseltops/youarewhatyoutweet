@@ -116,7 +116,7 @@ class TermProfiler(Classifier):
         text = t.lower()
         text = re.sub("\n", " ", text)
         text = re.sub(r'<[^>]+>', "", text)  # remove all html markup
-        text = re.sub('[^a-zèéeêëûüùôöòóœøîïíàáâäæãå&#A-Z0-9- \']', "", text)
+        text = re.sub('[^a-zèéeêëûüùôöòóœøîïíàáâäæãå&@#A-Z0-9- \']', "", text)
         wrds = text.split()
         return wrds
 
