@@ -86,7 +86,7 @@ class TermProfiler(Classifier):
             if n % 10000 == 0:
                 print(n / len(words))
 
-            if word not in stoplist:
+            if word not in stoplist and len(word) > 1 and '@' not in word:
                 if word in terms:
                     terms[word] += 1
                 else:
