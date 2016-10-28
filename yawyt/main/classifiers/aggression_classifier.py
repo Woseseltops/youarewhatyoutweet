@@ -11,7 +11,9 @@ class AggressionClassifier(SklearnClassifier):
         self.name = 'aggression_classifier'
 
     def classify(self, tweet):
-        vector = numpy.array(self.vectorize(tweet.content.lower(), underscore = True)) * self.weights
-        classification = self.predict_proba(vector)
-        self.add_classifications_to_tweet(tweet, {'aggressive' : classification[0]})
+        if tweet.content[2:5] != "RT ":
+            vector = numpy.array(self.vectorize(tweet.content.lower())) * self.weights
+#            vector = numpy.array([1 if x > 0 else 0 for x in self.vectorize(tweet.content)])
+            classification = self.predict_proba(vector)
+            self.add_classifications_to_tweet(tweet, {'aggressive' : classification[0]})
         return tweet
