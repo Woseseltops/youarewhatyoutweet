@@ -1,6 +1,6 @@
 from main.twitterlib.tweet import tweet_list_to_files_per_author, tweet_annotations_to_files_per_author
 from main.twitterlib.import_tweets import collect_tweets_for_user
-from main.classifiers import gender_classifier, age_classifier, aggression_classifier
+from main.classifiers import gender_classifier, age_classifier, aggression_classifier, predictability_classifier, sarcasm_classifier
 from main.models import ClassifierSection
 import yawyt.settings as settings
 import importlib
@@ -54,7 +54,7 @@ def analyze_tweets_of_user(user):
     finished_classifiers = Queue()
     nr_of_classifiers = len(ClassifierSection.objects.all())
 
-    for classifier_section in ClassifierSection.objects.all():
+    for classifier_section in ClassifierSection.objects.all().order_by('position'):
         classifier_module = importlib.import_module('main.classifiers.'+classifier_section.classifier_module_name)
         classifier_class = getattr(classifier_module,classifier_section.classifier_class_name)
         classifier = classifier_class()
