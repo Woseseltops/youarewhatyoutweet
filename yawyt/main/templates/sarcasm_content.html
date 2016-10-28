@@ -1,0 +1,10 @@
+{% load tweet_tags %}
+{% load score_visualisation %}
+
+<div class="sarcasm_meter">{{ meterscores_per_class.sarcastic |show_score_visualisation:profile_image_url }}</div>
+
+<h2>Meest sarcastische tweets</h2>
+{% for tweet in most_extreme_tweets.sarcastic %}
+{{ tweet.id|show_tweet }}
+<div class="confidence_bubble sarcasm_confidence">{{ tweet.automatic_classifications.sarcasm.sarcastic|show_fraction_as_percentage }}<span class="percentage">%</span></div>
+{% endfor %}
