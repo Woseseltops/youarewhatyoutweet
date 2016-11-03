@@ -3,12 +3,15 @@ from urllib.request import urlopen
 from multiprocessing import Pool
 from time import sleep
 
+from os import mkdir
+from shutil import rmtree
+
 def visit_analyze_page(user):
 
     URL = 'http://applejack.science.ru.nl/youarewhatyoutweet/analyze/'
     r = urlopen(URL+user).read()
-    print(r)
-    sleep(60) #Estimate average time the user wil spend at the analyze page
+    print('Did request for',user)
+    # sleep(60) #Estimate average time the user wil spend at the analyze page
     return r
 
 def scrape_twitter_users(input_file_path):
@@ -29,10 +32,19 @@ def start_stress_test(twitter_names,number_of_cores):
 
 if __name__ == '__main__':
 
+    DELETE_CACHE = True
+    CACHE_ROOT = '/home/wessel/yawyt/yawyt/main/data/'
+
     FILE_PATH = '100_invloedrijkste_twitteraars.txt'
     twitter_users = scrape_twitter_users(FILE_PATH)
 
     try:
+
+        if DELETE_CACHE:
+            for folder_path in ['classifications','logs','tweets']:
+                rmtree(CACHE_ROOT+folder_path)
+                mkdir(CACHE_ROOT+folder_path)
+
         number_of_twitter_users = int(argv[1])
         number_of_cores = int(argv[2])
 
