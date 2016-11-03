@@ -45,7 +45,12 @@ def classify_tweets_with_classifier(classifier,tweets,finished_classifiers_queue
 def analyze_tweets_of_user(user):
     refresh_logfile_for_user(user)
     log_progress_for_user('Collecting tweets for '+user, user)
-    tweets = collect_tweets_for_user(user,settings.PASSWORD_FOLDER,exclude_retweets=True)
+
+    try:
+        tweets = collect_tweets_for_user(user,settings.PASSWORD_FOLDER,exclude_retweets=True)
+    except:
+        log_progress_for_user('Collecting tweets failed; possibly this website has to done too many requests recently.',user)
+
     tweet_list_to_files_per_author(tweets, settings.TWEET_DATAFOLDER)
     log_progress_for_user('Collecting tweets completed', user)
                   
