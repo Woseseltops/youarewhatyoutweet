@@ -107,7 +107,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 PROJECT_ROOT = '/home/wstoop/yawyt/repo/youarewhatyoutweet/yawyt/' #unused?
-URL = '/youarewhatyoutweet'
+URL = ''
 STATIC_URL = URL+'/static/'
 
 CACHING = True
