@@ -33,6 +33,12 @@
 
         update_log();
         window.setInterval(update_log,1000);
+
+        if ('{{ user }}' == '')
+        {
+            console.log('got here');
+            window.location.assign('..');
+        }
     </script>
 
 	<div class="mainframe">
