@@ -16,6 +16,11 @@
         //Change the link based on what the user inputs
         $(window).ready(function()
         {
+            if (screen.width <= 800)
+            {
+                $('.main_explanation').html('Mobiele browsers worden niet ondersteund!');
+            }
+
             $("input").change(function()
             {
                 var action = $(this).val();
@@ -27,7 +32,7 @@
 
 	<div class="mainframe">
 		<h1>You are what you tweet</h1>
-        <p>Op basis van je Twittergedrag valt behoorlijk veel van je af te leiden. In deze demo willen we je laten zien wat onze technologie over jou denkt te weten.</p>
+        <p class="main_explanation">Op basis van je Twittergedrag valt behoorlijk veel van je af te leiden. In deze demo willen we je laten zien wat onze technologie over jou denkt te weten.</p>
 		<div class="enterfield">
             <form method="GET" action="analyze"><label>@</label><input name="user" class="text-input"><input class="button" type="submit" value="Analyseer!"></form>
         </div>
