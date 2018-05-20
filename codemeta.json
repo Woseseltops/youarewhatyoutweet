@@ -9,11 +9,11 @@
     ],
     "@type": "SoftwareSourceCode",
     "identifier": "youarewhatyoutweet",
-    "name": "youarewhatyoutweet",
+    "name": "You are what you tweet",
     "version": "unknown",
     "description": "Op basis van je Twittergedrag valt behoorlijk veel van je af te leiden. In deze demo willen we je laten zien wat onze technologie over jou denkt te weten",
     "license": "unknown",
-	"url": "https://youarewhatyoutweet.nl/",
+	"url": "http://youarewhatyoutweet.nl/",
     "producer": {
         "@id": "https://www.ru.nl/clst",
         "@type": "Organization",
